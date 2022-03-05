@@ -1,2 +1,115 @@
-<h1>EndUsers#show</h1>
-<p>Find me in app/views/end_users/show.html.erb</p>
+<br>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-auto mx-auto">
+      <h2>会員詳細</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <button class="fas_button_borderradius">Profile</button>
+      <div><%= image_tag @end_user.get_profile_image(100,100) %></div>
+
+        <table class="table">
+           <tbody>
+            <tr></tr>
+              <tr style="color:#bdd8dd">
+                <th>follows<%= link_to end_user_followings_path(@end_user.id) do %>
+                       <%= @end_user.followings.count %>
+                         <% end %> |
+                   followers<%= link_to end_user_followers_path(@end_user.id) do %>
+                            <%= @end_user.followers.count %>
+                       <% end %>
+                </th>
+              </tr>
+              <tr style="color:#bdd8dd">
+               <th>Name</th>
+               <th><%= @end_user.name %></th>
+              </tr>
+              <tr style="color:#bdd8dd">
+               <th>Introduction</th>
+               <th><%= @end_user.introduction %></th>
+              </tr>
+
+            <tr></tr>
+            </tbody>
+          </table>
+           <% if !(@end_user.name == "guestuser") %>
+              <%= link_to edit_end_user_path(@end_user) do %>
+              <button class="fas_button_borderradius"><i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s; color:#e6c5cf"></i></button>
+              <% end %>
+          <% end %>
+          <br>
+          <%= link_to new_item_path do %>
+          <button class="fas_button_round">New Item</button>
+          <% end %>
+
+        <% unless current_end_user == @end_user %>
+          <% if current_end_user.following?(@end_user) %>
+           <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "btn btn-success" %>
+          <% else %>
+           <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+
+       </div>
+
+      <div class="col-md-8">
+        <button class="fas_button_borderradius">My Box</button>
+          <%= paginate @items %>
+          <table class='table table-inverse'>
+            <thead>
+            <tr style="color:#bdd8dd">
+              <th></th>
+              <th>Category</th>
+              <th>品名</th>
+              <th>おすすめポイント</th>
+              <th>評価</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr style="color:#bdd8dd">
+                <td><% item.tags.each do |tag| %>
+                    <%= item.tag.name %>
+                    <% end %>
+                </td>
+                <td><%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image, size: "50x50" %>
+                <% end %>
+                </td>
+                <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
+                <td><%= item.body %></td>
+
+                <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
+                <!--<td><%#= render "book_comments/counter", book: book %></td>-->
+                <td id="star-rate<%= item.id %>"></td>
+               </tr>
+
+
+                  <script>
+                    $('#star-rate<%= item.id%>').raty({
+                      size      : 36,
+                      starOff   : '<%= asset_path('star-off.png') %>',
+                      starOn    : '<%= asset_path('star-on.png') %>',
+                      half      : false,
+                      readOnly: true,
+                      score: '<%= item.star %>',
+                    });
+                  </script>
+
+                </div>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+

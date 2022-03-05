@@ -1,0 +1,48 @@
+<table class='table table-inverse'>
+            <thead>
+            <tr style="color:#bdd8dd">
+              <th></th>
+              <th>Category</th>
+              <th>品名</th>
+              <th>おすすめポイント</th>
+              <th>評価</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr style="color:#bdd8dd">
+                <td><% item.tags.each do |tag| %>
+                    <%= tag.name %>
+                    <% end %>
+                </td>
+                <td><%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image, size:'50x50' %>
+                <% end %>
+                </td>
+                <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
+                <td><%= item.body %></td>
+
+                <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
+                <!--<td><%#= render "book_comments/counter", book: book %></td>-->
+                <td id="star-rate<%= item.id %>"></td>
+               </tr>
+
+
+                  <script>
+                    $('#star-rate<%= item.id%>').raty({
+                      size      : 36,
+                      starOff   : '<%= asset_path('star-off.png') %>',
+                      starOn    : '<%= asset_path('star-on.png') %>',
+                      half      : false,
+                      readOnly: true,
+                      score: '<%= item.star %>',
+                    });
+                  </script>
+                </div>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
