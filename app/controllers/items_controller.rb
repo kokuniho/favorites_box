@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items: Item.all
     @items = @items.page(params[:page])
     @end_user=current_end_user
+   
   end
 
   def show
