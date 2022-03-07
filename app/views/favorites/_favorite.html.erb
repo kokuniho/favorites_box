@@ -1,0 +1,12 @@
+<% if item.favorited_by?(current_end_user) %>
+   <%= link_to item_favorites_path(item), method: :delete do %>
+   <p style="color:#bdd8dd"><i class="fas fa-heart" aria-hidden="true" style="color: #e6c5cf;"></i>
+   <%= item.favorites.count %></p>
+   <% end %>
+<% else %>
+   <%= link_to item_favorites_path(item), method: :post do %>
+  
+    <p style="color:#bdd8dd"><i class="fas fa-heart" aria-hidden="true" style="color: #fff;" ></i>
+    <%= item.favorites.count %></p>
+   <% end %>
+<% end %>

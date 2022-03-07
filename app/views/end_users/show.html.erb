@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-auto mx-auto">
-      <h2><%= @end_user.name %> <i class="fa-solid fa-gift"></i> BOX</h2>
+      <h2><%= @end_user.name %> <i class="fa-regular fa-user"></i> BOX</h2>
     </div>
   </div>
 </div>
@@ -10,12 +10,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-     
+
       <h3>Profile</h3>
       <br>
        <div class="pl">
           <%= image_tag @end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-2 bg-body rounded-circle" %>
-          
+
           <h5 style="color:#e6c5cf">Name</h5><p><%= @end_user.name %></p>
           <h5 style="color:#e6c5cf">Introduction</h5><p><%= @end_user.introduction %></p>
           <p><% if !(@end_user.name == "guestuser") %>
@@ -39,19 +39,20 @@
               <% end %>
             <% end %>
          </p>
-         
-          
+
+
        </div>
       </div>
-      
 
-      <div class="col-md-7 offset-1">
-        <h3>Items </h3>  
+
+      <div class="col-md-8">
+        <h3>Items </h3>
           <%= render 'items/tagshow' %>
           <table class='table table-inverse'>
             <thead>
             <tr style="color:#bdd8dd">
               <th></th>
+              <th>いいね</th>
               <th>Category</th>
               <th>品名</th>
               <th>Goodポイント</th>
@@ -66,6 +67,7 @@
                 <%= image_tag item.get_image, size: "50x50" %>
                 <% end %>
                 </td>
+                <td><%= render 'favorites/favorite', item: item %></td>
                 <td>
                     <% item.tags.each do |tag| %>
                     <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
