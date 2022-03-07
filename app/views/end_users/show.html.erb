@@ -67,7 +67,8 @@
                 <%= image_tag item.get_image, size: "50x50" %>
                 <% end %>
                 </td>
-                <td><%= render 'favorites/favorite', item: item %></td>
+                <td class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %></td>
+                
                 <td>
                     <% item.tags.each do |tag| %>
                     <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>

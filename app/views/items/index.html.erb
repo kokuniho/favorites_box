@@ -8,7 +8,9 @@
           <%= link_to item_path(item.id) do %>
           <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
           <% end %>
-          <p><%= render 'favorites/favorite', item: item %></p>
+          <p style="color:#bdd8dd"><i class="fas fa-heart" aria-hidden="true" style="color: #e6c5cf;"></i>
+           <%= item.favorites.count %> 個</p>
+          <!--<p class="favorite_buttons_<%#= item.id %>"><%#= render 'favorites/favorite', item: item %></p>-->
           <p><% item.tags.each do |tag| %>
               <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
               <% end %></p>
