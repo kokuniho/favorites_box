@@ -7,7 +7,7 @@
       <% @end_users.each do |end_user| %>
         <div class="pl-4">
           <%= link_to end_user_path(end_user) do %>
-          <%= image_tag end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-5 bg-body round" %>
+          <%= image_tag end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-3 bg-body round" %>
           <% end %>
           <p><i class="fas fa-user"></i>:<%= end_user.name %></p>
           <p><i class="fa-solid fa-pen"></i><span>:<%= end_user.introduction %></p>

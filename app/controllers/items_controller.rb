@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @end_user = EndUser.find_by(id: @item.end_user_id)
+    
   end
 
   def edit

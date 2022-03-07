@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-auto mx-auto">
+      <br>
+      <h3>Edit User</h3>
+        <%= form_with model: @end_user, url: end_user_path(@end_user.id), method: :patch do |f| %>
+        <div class="field">
+        <%= f.label :Profile写真 %><br />
+        <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+        <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+        </div>
+        <div class="field">
+        <%= f.label :introduction %><br />
+        <%= f.text_area :introduction %>
+        </div>
+        <br />
+        <div class="field">
+        <%= f.submit "Update", class: 'fas_button_round' %>
+        </div>
+        <% end %>
+      </div>
+    </div> 
+  </div>
