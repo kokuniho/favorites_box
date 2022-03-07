@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-auto mx-auto">
-      <h2>会員詳細</h2>
+      <h2><%= @end_user.name %> <i class="fa-solid fa-gift"></i> BOX</h2>
     </div>
   </div>
 </div>
@@ -11,7 +11,15 @@
   <div class="row">
     <div class="col-md-3">
       <button class="fas_button_borderradius">Profile</button>
-      <div><%= image_tag @end_user.get_profile_image(100,100) %></div>
+      <div><%= image_tag @end_user.get_profile_image(100,100) %>
+            <% unless current_end_user == @end_user %>
+              <% if current_end_user.following?(@end_user) %>
+               <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
+              <% else %>
+               <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
+              <% end %>
+            <% end %>
+      </div>
 
         <table class="table">
            <tbody>
@@ -46,27 +54,18 @@
           <%= link_to new_item_path do %>
           <button class="fas_button_round">New Item</button>
           <% end %>
-
-        <% unless current_end_user == @end_user %>
-          <% if current_end_user.following?(@end_user) %>
-           <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "btn btn-success" %>
-          <% else %>
-           <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "btn btn-success" %>
-          <% end %>
-        <% end %>
-
        </div>
 
       <div class="col-md-8">
-        <button class="fas_button_borderradius">My Box</button>
-          <%= paginate @items %>
+        <button class="fas_button_borderradius">Items</button>
+        <%= render 'items/tagshow' %>
           <table class='table table-inverse'>
             <thead>
             <tr style="color:#bdd8dd">
               <th></th>
               <th>Category</th>
               <th>品名</th>
-              <th>おすすめポイント</th>
+              <th>Goodポイント</th>
               <th>評価</th>
               <th colspan="5"></th>
             </tr>
@@ -74,13 +73,14 @@
           <tbody>
             <% @items.each do |item| %>
               <tr style="color:#bdd8dd">
-                <td><% item.tags.each do |tag| %>
-                    <%= item.tag.name %>
-                    <% end %>
-                </td>
                 <td><%= link_to item_path(item.id) do %>
                 <%= image_tag item.get_image, size: "50x50" %>
                 <% end %>
+                </td>
+                <td>
+                    <% item.tags.each do |tag| %>
+                    <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
+                    <% end %>
                 </td>
                 <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
                 <td><%= item.body %></td>
@@ -106,10 +106,14 @@
             <% end %>
           </tbody>
         </table>
-
+         <div class="row justify-content-center">
+          <%= paginate @items %>
+         </div>
+         <br>
       </div>
     </div>
   </div>
+
 
 
 

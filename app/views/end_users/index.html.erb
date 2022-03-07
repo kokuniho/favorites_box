@@ -1,2 +1,36 @@
-<h1>EndUsers#index</h1>
-<p>Find me in app/views/end_users/index.html.erb</p>
+  <br>
+  <h2 class= "text-center">Members</h2>
+  <br>
+  <div class="col-md-12">
+    <div class="row justify-content-center">
+        
+      <% @end_users.each do |end_user| %>
+        <div class="pl-4">
+          <%= link_to end_user_path(end_user) do %>
+          <%= image_tag end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-5 bg-body round" %>
+          <% end %>
+          <p><i class="fas fa-user"></i>:<%= end_user.name %></p>
+          <p><i class="fa-solid fa-pen"></i><span>:<%= end_user.introduction %></p>
+          <div class="card-body text-center">
+              <% unless current_end_user == end_user %>
+                <% if current_end_user.following?(end_user) %>
+                 <%= link_to "フォローを外す", end_user_relationships_path(end_user.id), method: :delete, class: "fas_button2" %>
+                <% else %>
+                 <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "fas_button2" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <%= paginate @end_users %>
+    </div>
+
+
+
+
+
+

@@ -2,50 +2,54 @@
   <div class="row align-items-center">
     <div class="col-auto mx-auto">
       <br>
-       
-      
-      <h3>New Item</h3>
-
-      <%= form_with model: @item, url: items_path, method: :post do |f| %>
-      <div class="field">
-      <%= f.label :画像 %><br />
-      <%= f.file_field :image, accept: "image/*" %>
-      </div>
-      <div class="field">
-        <%= f.label :category %><br />
-        <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]) %>
-        <%#= render 'items/tag' %>
-      </div>
-      <div class="field">
-        <%= f.label :品名 %><br />
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :おすすめPoint %><br />
-        <%= f.text_area :body %>
-      </div>
-      <div class="field">
-         <div class="form-group row" id="star">
-          <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %><br />
-          <%= f.hidden_field :star, id: :review_star %>
-        </div>
-      </div>
-      <!-- 評価javascript -->
-        <script>
-        $('#star').raty({
-          size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-
-          scoreName: 'item[star]',
-          half: false,
-        });
-        </script>
-        
-        <%= f.submit "Create", class: 'fas_button_round' %>
-
-    <% end %>
+        <h3>New Item</h3>
+          <%= form_with model: @item, url: items_path, method: :post do |f| %>
+            <div class="field">
+            <%= f.label :画像 %><br />
+            <%= f.file_field :image, accept: "image/*" %>
+            </div>
+            <div class="field">
+              <%= f.label :category %><br />
+              <%#= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]) %>
+              <div class='form-group'>
+                  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            　   
+                  <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box class: 'form-check-input' %>
+                  <%= tag.text %>
+                  <% end %>
+                  
+                <% end %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label :品名 %><br />
+              <%= f.text_field :name %>
+            </div>
+            <div class="field">
+              <%= f.label :おすすめPoint %><br />
+              <%= f.text_area :body %>
+            </div>
+            <div class="field">
+               <div class="form-group row" id="star">
+                <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %><br />
+                <%= f.hidden_field :star, id: :review_star %>
+              </div>
+            </div>
+          <!-- 評価javascript -->
+            <script>
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
     
+              scoreName: 'item[star]',
+              half: false,
+            });
+            </script>
+            
+            <%= f.submit "Create", class: 'fas_button_round' %>
+        <% end %>
     </div>
   </div>
 </div>
