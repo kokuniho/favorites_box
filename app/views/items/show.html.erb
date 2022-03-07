@@ -1,6 +1,20 @@
 <div class="card w-50 mx-auto mt-4" style="background-color:#F4ECFB">
 
    <div class="card-body">
+     <div class= "row justify-content-center">
+      <div id="star-rate<%= @item.id %>"></div>
+       <script>
+        $('#star-rate<%= @item.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          half      : false,
+          readOnly: true,
+          score: '<%= @item.star %>',
+        });
+      </script>
+    </div>
+    <br>
   <div class="text-center"><%= link_to items_path do %>
     <%= image_tag @item.get_image, size: "300x300", class:"shadow p-3 mb-2 bg-body round"; %>
   <% end %>
@@ -30,9 +44,6 @@
        
         <!--<span><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
       </div>
-      <div class="col-3">
-
-      </div>
     </div>
   </div>
 </div>
@@ -49,6 +60,13 @@
             </p>
         <% end %>
       </div>
+      <br>
+     
+               
+
+
+                 
+     
 
 
 

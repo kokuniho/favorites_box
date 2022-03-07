@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-sm-3">
 
       <h3>Profile</h3>
       <br>
@@ -43,20 +43,18 @@
 
        </div>
       </div>
-
-
-      <div class="col-md-8">
+      <div class="col-sm-9">
         <h3>Items </h3>
           <%= render 'items/tagshow' %>
           <table class='table table-inverse'>
             <thead>
             <tr style="color:#bdd8dd">
               <th></th>
-              <th>いいね</th>
+              <th><i class="fas fa-heart" aria-hidden="true" style="color: #e6c5cf;"></i>数</th>
               <th>Category</th>
               <th>品名</th>
               <th>Goodポイント</th>
-              <th>評価</th>
+              <!--<th>評価</th>-->
               <th colspan="5"></th>
             </tr>
           </thead>
@@ -68,7 +66,7 @@
                 <% end %>
                 </td>
                 <td class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %></td>
-                
+
                 <td>
                     <% item.tags.each do |tag| %>
                     <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
@@ -79,20 +77,18 @@
 
                 <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
                 <!--<td><%#= render "book_comments/counter", book: book %></td>-->
-                <td id="star-rate<%= item.id %>"></td>
+                <!--<td id="star-rate<%#= item.id %>"></td>-->
                </tr>
-
-
-                  <script>
-                    $('#star-rate<%= item.id%>').raty({
-                      size      : 36,
-                      starOff   : '<%= asset_path('star-off.png') %>',
-                      starOn    : '<%= asset_path('star-on.png') %>',
-                      half      : false,
-                      readOnly: true,
-                      score: '<%= item.star %>',
-                    });
-                  </script>
+                  <!--<script>-->
+                  <!--  $('#star-rate<%#= item.id%>').raty({-->
+                  <!--    size      : 36,-->
+                  <!--    starOff   : '<%#= asset_path('star-off.png') %>',-->
+                  <!--    starOn    : '<%#= asset_path('star-on.png') %>',-->
+                  <!--    half      : false,-->
+                  <!--    readOnly: true,-->
+                  <!--    score: '<%#= item.star %>',-->
+                  <!--  });-->
+                  <!--</script>-->
 
                 </div>
             <% end %>
