@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @end_user = EndUser.find_by(id: @item.end_user_id)
+    @item_comment=ItemComment.new
     
   end
 
@@ -53,6 +54,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :body, :image, :star, tag_ids: [])
+    params.require(:item).permit(:name, :body, :image, :star, :comment, tag_ids: [])
   end
 end
