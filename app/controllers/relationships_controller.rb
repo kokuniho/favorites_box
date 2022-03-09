@@ -10,7 +10,7 @@ class RelationshipsController < ApplicationController
      redirect_to request.referer
    end
    # フォロー一覧
-   def
+   
    def followings
       end_user = EndUser.find(params[:end_user_id])
       @end_users = end_user.followings
@@ -20,7 +20,4 @@ class RelationshipsController < ApplicationController
       end_user = EndUser.find(params[:end_user_id])
       @end_users = end_user.followers
    end
-
-          
-    
 end

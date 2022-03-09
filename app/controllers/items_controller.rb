@@ -17,9 +17,14 @@ class ItemsController < ApplicationController
   end
 
   def index
+    @end_user=current_end_user
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items: Item.all
     @items = @items.page(params[:page])
-    @end_user=current_end_user
+    if  params[:sort] == "star"
+       @items = @items.all.order("star DESC").page(params[:page])
+    elsif params[:sort] == "create"
+       @items = @items.all.order(created_at: :desc).page(params[:page])
+    end
    
   end
 

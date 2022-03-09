@@ -6,14 +6,12 @@
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-
-      <h3>Profile</h3>
-      <br>
-       <div class="pl">
+ <div class="container">
+   <div class="row">
+     <div class="col-sm-3">
+       <h3>Profile</h3>
+       <br>
+        <div class="pl">
           <%= image_tag @end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-2 bg-body rounded-circle" %>
 
           <h5 style="color:#e6c5cf">Name</h5><p><%= @end_user.name %></p>
@@ -39,12 +37,10 @@
               <% end %>
             <% end %>
          </p>
-
-
        </div>
       </div>
       <div class="col-sm-9">
-        <h3>Items </h3>
+       <h3>Items </h3>
         <div class= field><%= render 'end_users/sort', end_user: @end_user %></div>
           <%= render 'items/tagshow' %>
           <table class='table table-inverse'>

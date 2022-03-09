@@ -1,8 +1,9 @@
 <%= render 'items/tagsearch' %>
+
    <div class="col-md-12">
     <div class="row justify-content-center">
 
-
+<%= render 'items/sort' %>
     <% @items.each do |item| %>
         <div class="pl-5">
           <%= link_to item_path(item.id) do %>

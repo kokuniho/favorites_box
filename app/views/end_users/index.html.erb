@@ -4,8 +4,6 @@
   <%= render 'end_users/search', q: @q %>
   <div class="col-md-12">
     <div class="row justify-content-center">
-      
-        
       <% @end_users.each do |end_user| %>
         <div class="pl-4">
           <%= link_to end_user_path(end_user) do %>
