@@ -1,0 +1,15 @@
+<div class='container'>
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
+      <br><div class= "text-center">
+        <h2>本当に退会しますか？</h2>
+        <p>退会すると、会員情報や</p>
+        <p>これまでの購入履歴が閲覧できなくなります。</p>
+        <p>退会する場合は、「退会する」をクリックしてください。</p>
+      </div>
+      <div class= "text-center">
+        <%= link_to '退会しない', end_user_path(@end_user), class: 'fas_button_round' %><br />
+        <br>
+        <%= link_to "退会する",end_users_withdraw_path, method: :patch, class: "fas_button2" %>
+      </div>
+    </div>
+</div>

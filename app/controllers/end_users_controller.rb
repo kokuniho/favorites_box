@@ -41,7 +41,17 @@ class EndUsersController < ApplicationController
   
   def search
     @results=@q.result
-    
+  end
+  
+  def finished
+    @end_user = current_end_user
+  end
+
+  def withdraw
+    @end_user = current_end_user
+    @end_user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
 
