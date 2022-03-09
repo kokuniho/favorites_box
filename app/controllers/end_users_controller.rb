@@ -1,6 +1,7 @@
 class EndUsersController < ApplicationController
    before_action :authenticate_end_user!
    before_action :ensure_guest_end_user, only: [:edit]
+   before_action :set_q, only: [:index, :search]
 
   def index
     @end_users =EndUser.page(params[:page])
@@ -38,9 +39,18 @@ class EndUsersController < ApplicationController
       render :edit
     end
   end
+  
+  def search
+    @results=@q.result
+    
+  end
 
 
   private
+  
+  def set_q
+    @q=EndUser.ransack(params[:q])
+  end
 
   def end_user_params
     params.require(:end_user).permit(:name, :introduction, :profile_image, tag_ids: [])
