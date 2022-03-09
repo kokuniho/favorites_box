@@ -21,9 +21,9 @@ class ItemsController < ApplicationController
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items: Item.all
     @items = @items.page(params[:page])
     if  params[:sort] == "star"
-       @items = @items.all.order("star DESC").page(params[:page])
+       @items = Item.all.order("star DESC").page(params[:page])
     elsif params[:sort] == "create"
-       @items = @items.all.order(created_at: :desc).page(params[:page])
+       @items = Item.all.order(created_at: :desc).page(params[:page])
     end
    
   end
