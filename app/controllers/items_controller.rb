@@ -17,9 +17,16 @@ class ItemsController < ApplicationController
   end
 
   def index
+    #過去一週間分のいいね数多い順に並べ替え
     @end_user=current_end_user
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items: Item.all
-    @items = @items.page(params[:page])
+    to = Time.current.at_end_of_day
+     from = (to - 6.day).at_beginning_of_day
+      items = Item.all.sort {|a,b|
+      b.favorites.where(created_at: from...to).size <=>
+      a.favorites.where(created_at: from...to).size
+    }
+    @items = Kaminari.paginate_array(items).page(params[:page])
     if  params[:sort] == "star"
        @items = Item.all.order("star DESC").page(params[:page])
     elsif params[:sort] == "create"

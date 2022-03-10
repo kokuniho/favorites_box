@@ -12,38 +12,38 @@
         <% if end_user_signed_in? %>
         <li class="nav-item">
           <%= link_to end_user_path(current_end_user.id), class: 'nav-link text-secondary' do %>
-          <i class="fa-regular fa-user"></i> My Page
+          <i class="far fa-user"></i> My Page
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to items_path, class: 'nav-link text-secondary' do %>
-          <i class="fa-solid fa-gift"></i> Box Items
+          <i class="fas fa-gift"></i> Box Items
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to end_users_path, class: 'nav-link text-secondary' do %>
-          <i class="fa-solid fa-user-group"></i> Members
+          <i class="fas fa-users"></i> Members
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to destroy_end_user_session_path, method: :delete, class: 'nav-link text-secondary' do %>
-          <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+          <i class="fas fa-sign-out-alt"></i> Log Out
           <% end %>
         </li>
         <% else %>
         <li class="nav-item">
           <%= link_to items_path, class: 'nav-link text-secondaryk' do %>
-          <i class="fa-solid fa-gift"></i> Box Items
+          <i class="fas fa-gift"></i> Box Items
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to new_end_user_registration_path, class: 'nav-link text-secondary' do %>
-          <i class="fa-solid fa-user-group"></i> Join Us
+          <i class="fas fa-users"></i> Join Us
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to new_end_user_session_path, class: 'nav-link text-secondary' do %>
-          <i class="fa-solid fa-arrow-right-to-bracket"></i> Log In
+          <i class="fas fa-sign-in-alt"></i> Log In
           <% end %>
         </li>
         <% end %>

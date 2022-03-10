@@ -13,6 +13,13 @@ class EndUsersController < ApplicationController
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : @end_user.items.all
     # #ユーザーに紐づいたitem全てのページネーション。
     @items = @items.where(end_user_id: params[:id]).page(params[:page])
+    # to = Time.current.at_end_of_day
+    # from = (to - 6.day).at_beginning_of_day
+    #   items = @end_user.items.all.sort {|a,b|
+    #   b.favorites.where(created_at: from...to).size <=>
+    #   a.favorites.where(created_at: from...to).size
+    # }
+    # @items = Kaminari.paginate_array(items).page(params[:page])
      if  params[:sort] == "star"
        @items = @items.all.order("star DESC").page(params[:page])
      elsif params[:sort] == "create"
@@ -38,11 +45,11 @@ class EndUsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def search
     @results=@q.result
   end
-  
+
   def finished
     @end_user = current_end_user
   end
@@ -56,7 +63,7 @@ class EndUsersController < ApplicationController
 
 
   private
-  
+
   def set_q
     @q=EndUser.ransack(params[:q])
   end
