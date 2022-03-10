@@ -32,10 +32,10 @@
             <% end %>
         </p>
         <p class="card-text">
-            <strong><i class="fa-solid fa-gift"></i> <span><%= @item.name %></span></strong>
+            <strong><i class="fas fa-gift"></i> <span><%= @item.name %></span></strong>
         </p>
         <p class="card-text">
-          <strong><i class="fa-regular fa-thumbs-up"></i> <span><%= @item.body %></span></strong>
+          <strong><i class="fas fa-comment-dots"></i> <span><%= @item.body %></span></strong>
         </p>
        <span><i class="fas fa-user"></i> By <%= @item.end_user.name %> ｜</span>
         <span class="item-comments-counter"><%= render 'item_comments/counter', item: @item %></span>
@@ -53,10 +53,10 @@
         <% if @item.end_user == current_end_user %>
 
             <p><%= link_to edit_item_path(@item), class: "fas_button_border" do %>
-                 <i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s; color:#fff"></i> Edit
+                 <i class="fas fa-cog"></i> Edit
                  <% end %>
             <%= link_to item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "fas_button_border" do %>
-                 <i class="fa-regular fa-trash-can"></i> Delete
+                 <i class="fas fa-trash-alt"></i> Delete
                  <% end %>
             </p>
         <% end %>

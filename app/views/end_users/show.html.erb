@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-auto mx-auto">
-      <h2><%= @end_user.name %> <i class="fa-regular fa-user"></i> BOX</h2>
+      <h2><%= @end_user.name %> <i class="fas fa-box-open"></i> BOX</h2>
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
           <h5 style="color:#e6c5cf">Introduction</h5><p><%= @end_user.introduction %></p>
           <p><% if !(@end_user.name == "guestuser") %>
                <%= link_to edit_end_user_path(@end_user) do %>
-               <button class="fas_button_borderradius"><i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s; color:#e6c5cf"></i> Edit</button>
+               <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
               <% end %>
              <% end %></p>
            <p style="color:#e6c5cf">
