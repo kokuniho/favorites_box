@@ -15,6 +15,9 @@ class EndUser < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :favorites, dependent: :destroy
   has_many :item_comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  
 
 
   def get_profile_image(width, height)

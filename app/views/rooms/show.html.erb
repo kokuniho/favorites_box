@@ -1,0 +1,59 @@
+<br>
+<div class="left-button">
+  <%= link_to "Member一覧", end_users_path, class: "fas_button_border" %>
+</div>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-auto mx-auto">
+      <h4 class ="rooms-title">Chat room</h4>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <% @entries.each do |e| %>
+        <div class="end_user">
+            <strong><a href="/end_users/<%= e.end_user.id %>">
+            <%= image_tag e.end_user.get_profile_image(30,30), class:"mt-3 rounded-circle"; %>
+            <%= e.end_user.name %></a>
+          </strong>
+        </div>
+      <% end %>
+     </div>
+    </div>
+<hr>
+<div class="row align-items-center">
+  <div class="col-auto mx-auto">
+    <div class="chats">
+      <div class="chat">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+          <div class="chat-box">
+            <div class="chat-face">
+              <%= image_tag m.end_user.get_profile_image(30,30), class:"mt-3 rounded-circle" %>
+              <%= m.end_user.name %>:  <strong><%= m.message %></strong>
+            </div>
+            <div class="chat-room">
+              <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+              <% if m.end_user == current_end_user %>
+                <%= link_to message_path(m.id), method: :delete, class: "fas_button_border" do %>
+                 <i class="fas fa-trash-alt"></i> 
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+        <div class="posts">
+          <%= form_with model: @message, local: true do |f| %>
+            <%= f.text_field :message, placeholder: "メッセージを入力", size: 50, class:"form-text-field" %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+              <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+                <%= f.submit "Send", class: 'form-submit'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
