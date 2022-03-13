@@ -9,6 +9,27 @@ class EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
+    #roomがcreateされた時に、ログインしているユーザーと、「チャットへ」を押されたユーザーの両方をEntriesテーブルに記録する
+    @currentEndUserEntry = Entry.where(end_user_id: current_end_user.id)
+    @EndUserEntry = Entry.where(end_user_id: @end_user.id)
+    #現在ログインしているユーザーではないというunlessの条件
+    unless @end_user.id == current_end_user.id
+      #roomsが作成されている場合と作成されていない場合に条件分岐
+      #作成されている時、eachで一人づつ取り出し、Entriesテーブル内のroom_idが共通しているのユーザー同士に変数を指定
+      @currentEndUserEntry.each do |cu|
+        @EndUserEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
     #タグ検索　タグがあれば、end_userのitemタグからitemを絞り込み
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : @end_user.items.all
     # #ユーザーに紐づいたitem全てのページネーション。
