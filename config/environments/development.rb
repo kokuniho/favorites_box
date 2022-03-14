@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.web_console.whitelisted_ips = '180.31.198.170'
+  # config.web_console.whitelisted_ips = '180.31.198.170'
   
   # Settings specified here will take precedence over those in config/application.rb.
 

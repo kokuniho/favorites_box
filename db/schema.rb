@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_071249) do
+ActiveRecord::Schema.define(version: 2022_03_11_034006) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
     t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_entries_on_end_user_id"
-    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -98,41 +96,11 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
     t.integer "star"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "message"
-    t.bigint "end_user_id"
-    t.bigint "room_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_messages_on_end_user_id"
-    t.index ["room_id"], name: "index_messages_on_room_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.bigint "room_id", null: false
-    t.bigint "message_id", null: false
-    t.boolean "checked", default: false, null: false
-    t.string "action"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["message_id"], name: "index_notifications_on_message_id"
-    t.index ["room_id"], name: "index_notifications_on_room_id"
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.bigint "end_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_rooms_on_end_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -143,13 +111,6 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "entries", "end_users"
-  add_foreign_key "entries", "rooms"
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
-  add_foreign_key "messages", "end_users"
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "notifications", "messages"
-  add_foreign_key "notifications", "rooms"
-  add_foreign_key "rooms", "end_users"
 end
