@@ -31,21 +31,25 @@ class EndUsersController < ApplicationController
       end
     end
     #タグ検索　タグがあれば、end_userのitemタグからitemを絞り込み
-    @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : @end_user.items.all
+    items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : @end_user.items.all
+    @tag_id = params[:tag_id].present? ? params[:tag_id] : nil
     # #ユーザーに紐づいたitem全てのページネーション。
-    @items = @items.where(end_user_id: params[:id]).page(params[:page])
-    # to = Time.current.at_end_of_day
-    # from = (to - 6.day).at_beginning_of_day
-    #   items = @end_user.items.all.sort {|a,b|
-    #   b.favorites.where(created_at: from...to).size <=>
-    #   a.favorites.where(created_at: from...to).size
-    # }
-    # @items = Kaminari.paginate_array(items).page(params[:page])
-     if  params[:sort] == "star"
-       @items = @items.all.order("star DESC").page(params[:page])
-     elsif params[:sort] == "create"
-        @items = @items.all.order(created_at: :desc).page(params[:page])
-     end
+    if  params[:sort] == "star"
+      items = items.where(end_user_id: params[:id]).order("star DESC")
+    elsif params[:sort] == "create"
+      items = items.where(end_user_id: params[:id]).order(created_at: :desc)
+    else
+      items = items.where(end_user_id: params[:id])#.page(params[:page])
+      to = Time.current.at_end_of_day
+      from = (to - 6.day).at_beginning_of_day
+      items = items.all.sort {|a,b|
+          pp a, b
+          b.favorites.where(created_at: from...to).size <=>
+          a.favorites.where(created_at: from...to).size
+      }
+    end
+    @items = Kaminari.paginate_array(items).page(params[:page])
+    @notifications = current_end_user.passive_notifications
   end
 
   def edit

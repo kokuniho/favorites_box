@@ -1,8 +1,15 @@
 <br>
 <div class= "container">
   <div class="row justify-content-center">
-    <%= link_to end_user_path(end_user, {sort: "create"}) do %>新着順<% end %> |
+    <% if tag_id.nil? %>
+    <%= link_to end_user_path(end_user, {sort: "create"}) do %>新着順<% end %>
+    |
     <%= link_to end_user_path(end_user, {sort: "star"}) do %>星評価順<% end %>
+    <% else %>
+    <%= link_to end_user_path(end_user, {sort: "create", tag_id: tag_id}) do %>新着順<% end %>
+    |
+    <%= link_to end_user_path(end_user, {sort: "star", tag_id: tag_id}) do %>星評価順<% end %>
+    <% end %>
   </div>
 </div>
 <br>

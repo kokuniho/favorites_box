@@ -9,7 +9,7 @@
               <%= image_tag end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-3 bg-body round" %>
             <% end %>
             <p><i class="fas fa-user"></i>:<%= end_user.name %></p>
-            <p><i class="fa-solid fa-pen"></i><span>:<%= end_user.introduction %></p>
+            <p><i class="fas fa-pen-square"></i><span>:<%= end_user.introduction %></p>
             <div class="card-body text-center">
                 <% unless current_end_user == end_user %>
                   <% if current_end_user.following?(end_user) %>

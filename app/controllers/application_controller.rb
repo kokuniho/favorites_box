@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   # サインイン、ログアウト後にroot_path以外を遷移させたい時
   def after_sign_in_path_for(resource)
-     end_user_path(@end_user.id)
+     end_user_path(current_end_user)
   end
   
   

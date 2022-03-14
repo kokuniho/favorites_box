@@ -7,8 +7,6 @@ class Item < ApplicationRecord
    has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
    has_many :item_comments, dependent: :destroy
    
-   
-
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/logo2.png')
