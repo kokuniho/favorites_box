@@ -1,0 +1,18 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+
+<div>
+ <%= link_to end_user_path(visitor) do %>
+     <%= visitor.name %>さんが
+ <% end %>
+ <% if notification.action=='dm' %>
+    あなたにDMを送りました
+ <% end %>
+ <%= time_ago_in_words(notification.created_at).upcase %>
+
+  <%= link_to notification_path(notification.id), method: :delete, class: "fas_button_border" do %>
+   <i class="fas fa-trash-alt"></i>
+  <% end %>
+ </div>
+ <br>

@@ -13,38 +13,41 @@
        <br>
         <div class="pl">
           <%= image_tag @end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-2 bg-body rounded-circle" %>
-
           <h5 style="color:#e6c5cf">Name</h5><p><%= @end_user.name %></p>
           <h5 style="color:#e6c5cf">Introduction</h5><p><%= @end_user.introduction %></p>
           <p><% if !(@end_user.name == "guestuser") %>
                <%= link_to edit_end_user_path(@end_user) do %>
                <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
-              <% end %>
+               <% end %>
              <% end %></p>
-           <p style="color:#e6c5cf">
-            follows<%= link_to end_user_followings_path(@end_user.id) do %>
+               <p style="color:#e6c5cf">
+                follows<%= link_to end_user_followings_path(@end_user.id) do %>
                      <%= @end_user.followings.count %>
                    <% end %> |
-            followers<%= link_to end_user_followers_path(@end_user.id) do %>
+                followers<%= link_to end_user_followers_path(@end_user.id) do %>
                       <%= @end_user.followers.count %>
                      <% end %>
-          </p>
-          <p><% unless current_end_user == @end_user %>
-              <% if current_end_user.following?(@end_user) %>
-               <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
-              <% else %>
-               <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
-              <% end %>
-            <% end %>
-         </p>
-       <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
-
-       </div>
+              </p>
+              <p><% unless current_end_user == @end_user %>
+                  <% if current_end_user.following?(@end_user) %>
+                   <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
+                  <% else %>
+                   <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
+                  <% end %>
+                 <% end %>
+              </p>
+              <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
+              <p><% if @end_user == current_end_user %>
+                 <%= link_to '通知を見る', notifications_index_path, class: "fas_button2" %>
+                 <%= render 'notifications/sign' %>
+                 <% end %>
+              </p>
+        </div>
       </div>
       <div class="col-sm-9">
        <h3>Items </h3>
           <%= render 'items/tagshow' %>
-          <%= render 'end_users/sort', end_user: @end_user %>
+          <%= render 'end_users/sort', {end_user: @end_user, tag_id: @tag_id} %>
           <table class='table table-inverse'>
             <thead>
             <tr style="color:#bdd8dd">
@@ -73,23 +76,7 @@
                 </td>
                 <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
                 <td><%= item.body %></td>
-
-                <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
-                <!--<td><%#= render "book_comments/counter", book: book %></td>-->
-                <!--<td id="star-rate<%#= item.id %>"></td>-->
                </tr>
-                  <!--<script>-->
-                  <!--  $('#star-rate<%#= item.id%>').raty({-->
-                  <!--    size      : 36,-->
-                  <!--    starOff   : '<%#= asset_path('star-off.png') %>',-->
-                  <!--    starOn    : '<%#= asset_path('star-on.png') %>',-->
-                  <!--    half      : false,-->
-                  <!--    readOnly: true,-->
-                  <!--    score: '<%#= item.star %>',-->
-                  <!--  });-->
-                  <!--</script>-->
-
-                </div>
             <% end %>
           </tbody>
         </table>
@@ -100,6 +87,7 @@
           <button class="fas_button_round">New Item</button>
           <% end %></p>
          <br>
+       </div>
       </div>
     </div>
   </div>

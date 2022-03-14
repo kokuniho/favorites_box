@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
     @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items: Item.all
     to = Time.current.at_end_of_day
      from = (to - 6.day).at_beginning_of_day
-      items = Item.all.sort {|a,b|
+      items = @items.all.sort {|a,b|
       b.favorites.where(created_at: from...to).size <=>
       a.favorites.where(created_at: from...to).size
     }
@@ -32,14 +32,14 @@ class ItemsController < ApplicationController
     elsif params[:sort] == "create"
        @items = Item.all.order(created_at: :desc).page(params[:page])
     end
-   
+
   end
 
   def show
     @item = Item.find(params[:id])
     @end_user = EndUser.find_by(id: @item.end_user_id)
     @item_comment=ItemComment.new
-    
+
   end
 
   def edit

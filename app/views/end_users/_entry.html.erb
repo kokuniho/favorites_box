@@ -1,7 +1,8 @@
 <% unless end_user.id == current_end_user.id %>
   <% if (current_end_user.following? end_user) && (end_user.following? current_end_user) %>
       <% if isRoom == true %>
-        <p class="end-user-show-room"><a href="/rooms/<%= roomId %>" class="btn btn-primary btn-lg">チャットへ</a></p>
+      
+        <p class="end-user-show-room"><a href="/rooms/<%= roomId %>" class="fas_button2">Chat Room <i class="fas fa-comment-dots"></i></a></p>
       <% else %>
   <!--レコードは、Roomsテーブルと、Entriesテーブル両方に保存する-->
       <%= form_with model: room, url: rooms_path do |f| %>
@@ -9,7 +10,7 @@
        <!--Entriesテーブルのレコードにはend_user_idを送る必要がある-->
        <%= e.hidden_field :end_user_id, value: end_user.id %>
        <% end %>
-       <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg end_user-show-chat"%>
+       <%= f.submit "Start Chat", class:"fas_button2"%>
        <% end %>
    <% end %>
   <% end %>

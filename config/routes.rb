@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   devise_for :end_users
   root "homes#top"
   get	'/end_users/finished' => 'end_users#finished'
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   end
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create, :show]
+  resources :notifications, only: [:index, :destroy]
 end
