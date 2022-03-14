@@ -27,13 +27,11 @@ class MessagesController < ApplicationController
     end
   end
 
-
   def destroy
     @messages = Message.find(params[:id])
     @messages.destroy
     redirect_to request.referer
   end
-
 
   private
 

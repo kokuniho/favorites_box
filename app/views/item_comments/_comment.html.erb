@@ -4,12 +4,13 @@
       <tbody>
       <% item.item_comments.each do |item_comment| %>
         <tr>
-          <td><%= item_comment.comment %> </td>
-          <td> <i class="fa-regular fa-circle-user"></i>By<%= item_comment.end_user.name %>
-          <%= item_comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= item_comment.comment %>
+            <i class="far fa-user-circle"></i>By<%= item_comment.end_user.name %>
+            <%= item_comment.created_at.strftime('%Y/%m/%d') %>
+          </td>
           <td><% if item_comment.end_user == current_end_user %>
                 <%= link_to item_item_comment_path(item_comment.item, item_comment.id), method: :delete, class: "fas_button_border", remote: true do %>
-                <i class="fa-regular fa-trash-can"></i> Delete<% end %>
+                <i class="fas fa-trash-alt"></i> Delete<% end %>
                <% end %>
           </td>
         </tr>

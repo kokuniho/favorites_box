@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
   end
 
   create_table "entries", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "room_id"
+    t.bigint "end_user_id"
+    t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["end_user_id"], name: "index_entries_on_end_user_id"
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
 
   create_table "messages", force: :cascade do |t|
     t.text "message"
-    t.integer "end_user_id"
-    t.integer "room_id"
+    t.bigint "end_user_id"
+    t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["end_user_id"], name: "index_messages_on_end_user_id"
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
-    t.integer "room_id", null: false
-    t.integer "message_id", null: false
+    t.bigint "room_id", null: false
+    t.bigint "message_id", null: false
     t.boolean "checked", default: false, null: false
     t.string "action"
     t.datetime "created_at", precision: 6, null: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_071249) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "end_user_id"
+    t.bigint "end_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["end_user_id"], name: "index_rooms_on_end_user_id"

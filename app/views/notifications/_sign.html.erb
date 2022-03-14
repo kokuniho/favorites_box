@@ -1,10 +1,11 @@
-<%= link_to(notifications_path) do %>
+ <%= link_to notifications_path, class: "fas_button2" do %>
+  通知を見る
   <% if unchecked_notifications.any? %>
     <span class="fa-stack">
-      <i class= "fas fa-bell fa-stack-2x" style="font-size: 1.5em;"></i>
+      <i class= "far fa-bell fa-stack-2x" style="font-size: 1.5em;"></i>
       <i class= "fas fa-circle n-circle fa-2x"></i>
     </span>
   <% else %>
-    <i class="fas fa-bell fa-lg" style="font-size: 1.5em;"></i>
+    <i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>
   <% end %>
 <% end %>

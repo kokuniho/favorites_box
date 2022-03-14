@@ -20,31 +20,31 @@
                <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
                <% end %>
              <% end %></p>
-               <p style="color:#e6c5cf">
-                follows<%= link_to end_user_followings_path(@end_user.id) do %>
-                     <%= @end_user.followings.count %>
-                   <% end %> |
-                followers<%= link_to end_user_followers_path(@end_user.id) do %>
-                      <%= @end_user.followers.count %>
-                     <% end %>
-              </p>
-              <p><% unless current_end_user == @end_user %>
-                  <% if current_end_user.following?(@end_user) %>
-                   <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
-                  <% else %>
-                   <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
-                  <% end %>
-                 <% end %>
-              </p>
-              <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
-              <p><% if @end_user == current_end_user %>
-                 <%= link_to '通知を見る', notifications_index_path, class: "fas_button2" %>
-                 <%= render 'notifications/sign' %>
-                 <% end %>
-              </p>
+          <p style="color:#e6c5cf">
+            follows<%= link_to end_user_followings_path(@end_user.id) do %>
+              <%= @end_user.followings.count %>
+            <% end %> |
+            followers<%= link_to end_user_followers_path(@end_user.id) do %>
+              <%= @end_user.followers.count %>
+            <% end %>
+          </p>
+          <p><% unless current_end_user == @end_user %>
+              <% if current_end_user.following?(@end_user) %>
+               <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
+              <% else %>
+               <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
+              <% end %>
+             <% end %>
+          </p>
+          <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
+          <p><% if @end_user == current_end_user %>
+             <%#= link_to '通知を見る', notifications_index_path, class: "fas_button2" %>
+             <%= render 'notifications/sign' %>
+             <% end %>
+          </p>
         </div>
-      </div>
-      <div class="col-sm-9">
+     </div>
+     <div class="col-sm-9">
        <h3>Items </h3>
           <%= render 'items/tagshow' %>
           <%= render 'end_users/sort', {end_user: @end_user, tag_id: @tag_id} %>
@@ -64,8 +64,8 @@
             <% @items.each do |item| %>
               <tr style="color:#bdd8dd">
                 <td><%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_image, size: "50x50" %>
-                <% end %>
+                    <%= image_tag item.get_image, size: "50x50" %>
+                    <% end %>
                 </td>
                 <td class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %></td>
 
@@ -76,10 +76,10 @@
                 </td>
                 <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
                 <td><%= item.body %></td>
-               </tr>
+              </tr>
             <% end %>
-          </tbody>
-        </table>
+           </tbody>
+          </table>
          <div class="row justify-content-center">
           <%= paginate @items %>
          </div>
