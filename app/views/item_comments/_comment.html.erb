@@ -4,14 +4,16 @@
       <tbody>
       <% item.item_comments.each do |item_comment| %>
         <tr>
-          <td><%= item_comment.comment %>
-            <i class="far fa-user-circle"></i>By<%= item_comment.end_user.name %>
-            <%= item_comment.created_at.strftime('%Y/%m/%d') %>
+          <td>
+           <p class="word" style="width: 140px;"><%=safe_join(item_comment.comment.split("\n"),tag(:br))%></p>
           </td>
-          <td><% if item_comment.end_user == current_end_user %>
-                <%= link_to item_item_comment_path(item_comment.item, item_comment.id), method: :delete, class: "fas_button_border", remote: true do %>
-                <i class="fas fa-trash-alt"></i> Delete<% end %>
-               <% end %>
+          <td>
+            <i class="far fa-user-circle"></i>By<%= item_comment.end_user.name %><%= item_comment.created_at.strftime('%Y/%m/%d') %>
+          
+             <% if item_comment.end_user == current_end_user %>
+              <%= link_to item_item_comment_path(item_comment.item, item_comment.id), method: :delete, class: "fas_button_border", remote: true do %>
+              <i class="fas fa-trash-alt"></i><% end %>
+             <% end %>
           </td>
         </tr>
      <% end %>
