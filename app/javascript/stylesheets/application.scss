@@ -2,11 +2,11 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   }
 
 body {
   width: 100%;
@@ -100,12 +100,42 @@ body {
 	word-wrap: break-word;
 }
 
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  //border: none;     /*枠線をなくす*/
+  color: #bdd8dd;/*文字の色を変える*/
+  background-color: #af9dc0;
+  border-radius: 15px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #af9dc0;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
 @media screen and (max-width:765px) {
 
  @include media-breakpoint-up(md) {
     @include row-cols(1);
   }
 
+}
+@media screen and (max-width:428px) {
+ header,
+ footer{
+  min-width: 420px;
+ }
+ footer{
+ 	display: flex;
+ 	flex-flow: column;
+ }
 
 }
 
