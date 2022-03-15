@@ -31,7 +31,7 @@
       <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
       <% end %></p>
       <p><strong><i class="fas fa-gift"></i>: <span><%= @item.name %></span></strong></p>
-      <p><strong><i class="fas fa-comment-dots"></i>: <span><%= @item.body %></span></strong></p>
+      <p class="word" style="width: 310px;"><strong><i class="fas fa-comment-dots"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
       <br />
       <div class ="text-center">
         <% if @item.end_user == current_end_user %>

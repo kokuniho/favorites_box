@@ -5,6 +5,7 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-auto mx-auto">
+      <br>
       <h4 class ="rooms-title">Chat room</h4>
       </div>
     </div>
@@ -30,13 +31,13 @@
           <div class="chat-box">
             <div class="chat-face">
               <%= image_tag m.end_user.get_profile_image(30,30), class:"mt-3 rounded-circle" %>
-              <%= m.end_user.name %>:  <strong><%= m.message %></strong>
+              <%= m.end_user.name %>: <p class="word" style="width: 350px;"><%=safe_join(m.message.split("\n"),tag(:br))%></p>
             </div>
             <div class="chat-room">
               <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
               <% if m.end_user == current_end_user %>
                 <%= link_to message_path(m.id), method: :delete, class: "fas_button_border" do %>
-                 <i class="fas fa-trash-alt"></i> 
+                 <i class="fas fa-trash-alt"></i>
                 <% end %>
               <% end %>
             </div>
@@ -47,7 +48,7 @@
       <br>
         <div class="posts">
           <%= form_with model: @message, local: true do |f| %>
-            <%= f.text_field :message, placeholder: "メッセージを入力", size: 50, class:"form-text-field" %>
+            <%= f.text_field :message, placeholder: "メッセージを入力", size: 30, class:"form-text-field" %>
               <%= f.hidden_field :room_id, value: @room.id %>
               <%= f.hidden_field :end_user_id, value: current_end_user.id %>
                 <%= f.submit "Send", class: 'form-submit'%>

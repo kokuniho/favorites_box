@@ -1,0 +1,43 @@
+<div class="col-lg-9 col-md-auto">
+       <h3>Items </h3>
+          <%= render 'items/tagshow' %>
+          <%= render 'end_users/sort', {end_user: @end_user, tag_id: @tag_id} %>
+          <table class='table table-inverse'>
+            <thead>
+            <tr style="color:#bdd8dd">
+              <th></th>
+              <th class="iine">いいね数</th>
+              <th class="cate">Category</th>
+              <th class="mei">品名</th>
+              <th class="po">Goodポイント</th>
+              <!--<th>評価</th>-->
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr style="color:#bdd8dd">
+                <td><%= link_to item_path(item.id) do %>
+                    <%= image_tag item.get_image, size: "50x50" %>
+                    <% end %>
+                </td>
+                <td class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %></td>
+                <td class="cate">
+                    <% item.tags.each do |tag| %>
+                    <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
+                    <% end %>
+                </td>
+                <td><%= link_to item.name,item, class: "item_#{item.id}" %></td>
+                <td><%= item.body %></td>
+              </tr>
+            <% end %>
+           </tbody>
+          </table>
+         <div class="row justify-content-center">
+          <%= paginate @items %>
+         </div>
+         <p class="row justify-content-end"><%= link_to new_item_path do %>
+          <button class="fas_button_round">New Item</button>
+          <% end %></p>
+         <br>
+       </div>

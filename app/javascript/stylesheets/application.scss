@@ -96,8 +96,16 @@ body {
   color: #efa04c;
 }
 
-@media screen and (max-width:768px) {
-	
-  
+.word{
+	word-wrap: break-word;
+}
+
+@media screen and (max-width:765px) {
+
+ @include media-breakpoint-up(md) {
+    @include row-cols(1);
+  }
+
+
 }
 
