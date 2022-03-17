@@ -31,6 +31,7 @@ body {
 	border-radius: 20px;
 	font-size: 1.5em;
 	cursor: pointer;
+	margin-right: 10px;
 }
 .fas_button2{
 	border: none;
@@ -87,6 +88,19 @@ body {
 
 }
 
+.fas_button_borderbackround{
+	border: none;
+	padding: 0 0;
+	height: 45px;
+	line-height: 1;
+	background: #af9dc0;
+	border: 2px solid #fff;
+	font-size: 1em;
+	border-radius: 20px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
 .n-circle {
   position: absolute;
   padding-left: 1rem;
@@ -99,6 +113,7 @@ body {
 .word{
 	word-wrap: break-word;
 }
+
 
 
 /*ページネーション自体のデザイン*/
@@ -125,17 +140,34 @@ body {
  @include media-breakpoint-up(md) {
     @include row-cols(1);
   }
+  .fas_button_borderbackround{
+ 	margin-bottom: 10px;
+ }
+}
 
+// @media screen and (max-width:860px){
+//   .backimage{
+// 	　background-attachment: fixed;
+// 	}
+// }
+@media screen and (max-width:569px) {
+	.fas_button_borderbackround{
+ 		padding: 0px 10px;
+ }
+ .fas_button_round{
+ 	margin-right: 10px;
+ }
 }
 @media screen and (max-width:428px) {
  header,
  footer{
   min-width: 420px;
  }
- footer{
- 	display: flex;
- 	flex-flow: column;
- }
+ //footer{
+ //	display: flex;
+ //	flex-flow: column;
+ //}
+ 
 
 }
 

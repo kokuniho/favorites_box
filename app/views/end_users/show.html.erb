@@ -20,7 +20,7 @@
             <h5 style="color:#e6c5cf">Introduction</h5><p><% @end_user.introduction %></p>
           <% else %>
             <h5 style="color:#e6c5cf">Introduction</h5><p class="word" style="width: 140px;"><%=safe_join(@end_user.introduction.split("\n"),tag(:br))%></p>
-           <!--#紹介文が「空」じゃない時は正常に反映する-->
+           <!--#紹介文が「空」じゃない時は正常に反映-->
           <% end %>
 
 
@@ -56,38 +56,32 @@
      </div>
 
 
-     <div class="col-lg-10 col-md-auto text-center">
+     <div class="col-lg-10 col-md-auto text-center" >
        <h3>Items</h3>
           <%= render 'items/tagshow' %>
           <%= render 'end_users/sort', {end_user: @end_user, tag_id: @tag_id} %>
-          <!--<div class="col-md-12">-->
-
-          <% @items.each do |item| %>
+      <% @items.each do |item| %>
         <div class="d-inline-flex p-2 bd-highlight">
           <div class="p-2 flex-fill bd-highlight" >
-          <div class="inline-block ">
-
-          <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
-          <% end %>
-          <div class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %>
-          </div>
-          <!--<p class="favorite_buttons_<%#= item.id %>"><%#= render 'favorites/favorite', item: item %></p>-->
-          <p><% item.tags.each do |tag| %>
-              <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
-              <% end %></p>
-          <h5>品名</h5>
-          <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
-
-          <h5>Good ポイント</h5>
-          <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
-
+            <div class="inline-block ">
+              <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
+              <% end %>
+              <div class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %>
+              </div>
+              <!--<p class="favorite_buttons_<%#= item.id %>"><%#= render 'favorites/favorite', item: item %></p>-->
+              <p><% item.tags.each do |tag| %>
+                  <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
+                  <% end %></p>
+              <h5>品名</h5>
+              <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
+    
+              <h5>おすすめPoint</h5>
+              <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
+             </div>
+           </div>
         </div>
-       </div>
-        </div>
-
-
-          <% end %>
+      <% end %>
          <div class="row justify-content-center">
           <%= paginate @items %>
          </div>
@@ -95,13 +89,9 @@
           <button class="fas_button_round">New Item</button>
           <% end %></p>
          <br>
-
-
       </div>
-
-    <!--</div>-->
-    </div>
-    </div>
+   </div>
+ </div>
 
 
 

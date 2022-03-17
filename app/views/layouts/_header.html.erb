@@ -12,40 +12,40 @@
         <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
         <li class="nav-item">
-          <%= link_to end_user_path(current_end_user.id), class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to end_user_path(current_end_user.id), class: 'nav-link text-light' do %>
           <i class="far fa-user"></i> My Page
-          <% end %>
+          <% end %></button>
         </li>
         <li class="nav-item">
-          <%= link_to items_path, class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to items_path, class: 'nav-link text-light' do %>
           <i class="fas fa-gift"></i> Box Items
-          <% end %>
+          <% end %></button>
         </li>
         <li class="nav-item">
-          <%= link_to end_users_path, class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to end_users_path, class: 'nav-link text-light' do %>
           <i class="fas fa-users"></i> Members
-          <% end %>
+          <% end %></button>
         </li>
         <li class="nav-item">
-          <%= link_to destroy_end_user_session_path, method: :delete, class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to destroy_end_user_session_path, method: :delete, class: 'nav-link text-light' do %>
           <i class="fas fa-sign-out-alt"></i> Log Out
-          <% end %>
+          <% end %></button>
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to items_path, class: 'nav-link text-secondaryk' do %>
+          <button class="fas_button_borderbackround"><%= link_to items_path, class: 'nav-link text-light' do %>
           <i class="fas fa-gift"></i> Box Items
-          <% end %>
+          <% end %></button>
         </li>
         <li class="nav-item">
-          <%= link_to new_end_user_registration_path, class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to new_end_user_registration_path, class: 'nav-link text-light' do %>
           <i class="fas fa-users"></i> Join Us
-          <% end %>
+          <% end %></button>
         </li>
         <li class="nav-item">
-          <%= link_to new_end_user_session_path, class: 'nav-link text-secondary' do %>
+          <button class="fas_button_borderbackround"><%= link_to new_end_user_session_path, class: 'nav-link text-light' do %>
           <i class="fas fa-sign-in-alt"></i> Log In
-          <% end %>
+          <% end %></button>
         </li>
         <% end %>
         </ul>
