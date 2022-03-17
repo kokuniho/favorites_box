@@ -7,9 +7,9 @@
         <p>退会する場合は、「退会する」をクリックしてください。</p>
       </div>
       <div class= "text-center">
-        <%= link_to '退会しない', end_user_path(@end_user), class: 'fas_button_round' %><br />
+        <%= link_to '退会しない', end_user_path(current_end_user.id), class: 'fas_button_round' %><br />
         <br>
-        <%= link_to "退会する",end_users_withdraw_path, method: :patch, class: "fas_button2" %>
+        <%= link_to "退会する", end_users_withdraw_path, method: :patch, class: "fas_button2" %>
       </div>
     </div>
 </div>

@@ -2,6 +2,8 @@
   <h2 class= "text-center">Box Items</h2>
   <%= render 'items/tagsearch' %>
   <%= render 'items/sort' %>
+     
+  
  <br>
    <div class="col-md-12">
     <div class="row justify-content-center">
@@ -18,7 +20,7 @@
               <% end %></p>
           <h5>品名</h5>
           <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
-          <h5>Good ポイント</h5>
+          <h5>おすすめPoint</h5>
           <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
           <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
                 <!--<td><%#= render "book_comments/counter", book: book %></td>-->
@@ -35,6 +37,11 @@
           </script>
         </div>
       <% end %>
+     <div class="col-md-10">
+     <p class="row justify-content-end">
+     <%= link_to new_item_path do %>
+     <i class="fas fa-plus-circle fa-2x" style="color: #e6c5cf;"></i>
+      <% end %></p></div>
     </div>
     <br>
     <div class="row justify-content-center"><%= paginate @items %></div>

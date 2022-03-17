@@ -10,9 +10,27 @@
             </div>
             <div class="field">
               <%= f.label :category %><br />
-              <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]) %>
+              
+              
+                <div class='form-group'>
+                 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            　   
+                  <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box class: 'form-check-input' %>
+                  <%= tag.text %>
+                  <% end %>
+                  
+                <% end %>
+                 
+              </div>
+              
+                
+             
+                  
+                  
+                
               <%#= render 'items/tag' %>
-            </div>
+           
             <div class="field">
               <%= f.label :品名 %><br />
               <%= f.text_field :name %>

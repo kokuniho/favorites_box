@@ -42,4 +42,8 @@ class EndUser < ApplicationRecord
   def following?(end_user)
     followings.include?(end_user)
   end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end

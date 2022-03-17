@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'notifications/index'
-  devise_for :end_users
+  devise_for :end_users, :controllers => { :registrations => 'end_users/registrations' }
   root "homes#top"
   get	'/end_users/finished' => 'end_users#finished'
   patch '/end_users/withdraw' =>	'end_users#withdraw'

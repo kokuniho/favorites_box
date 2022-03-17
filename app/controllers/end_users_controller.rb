@@ -1,5 +1,5 @@
 class EndUsersController < ApplicationController
-   before_action :authenticate_end_user!
+   before_action :authenticate_end_user!, except: [:top, :index]
    before_action :ensure_guest_end_user, only: [:edit]
    before_action :set_q, only: [:index, :search]
 
@@ -85,6 +85,7 @@ class EndUsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+  
 
 
   private
@@ -94,7 +95,7 @@ class EndUsersController < ApplicationController
   end
 
   def end_user_params
-    params.require(:end_user).permit(:name, :introduction, :profile_image, tag_ids: [])
+    params.require(:end_user).permit(:name, :introduction, :profile_image, :is_deleted, tag_ids: [])
   end
 
   def correct_end_user

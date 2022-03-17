@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class EndUsers::SessionsController < Devise::SessionsController
-  before_action :reject_inactive_end_user, only: [:create]
+  # before_action :reject_inactive_end_user, only: [:create]
+  before_action :end_user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -27,9 +28,9 @@ class EndUsers::SessionsController < Devise::SessionsController
   # end
   protected
   def end_user_state
-    @end_user = EndUser.find_by(email:params[:end_user][:email])
+    @end_user = EndUser.find_by(name:params[:end_user][:name].downcase)
     return if !@end_user
-    if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == true)
+    if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
       redirect_to new_end_user_registration_path
     end
   end

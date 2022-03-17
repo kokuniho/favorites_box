@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :redirect_root, except: :index
+  # before_action :show_redirect
 
   def new
     @item = Item.new
@@ -66,6 +68,12 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :body, :image, :star, :comment, tag_ids: [])
+    params.require(:item).permit(:name, :body, :image, :star, :comment, :tag_id, tag_ids: [])
   end
+
+  def redirect_root
+  redirect_to root_path unless end_user_signed_in?
+  end
+
+
 end
