@@ -3,10 +3,8 @@
 <div class="container">
 
 <!--<div class='backimage' style="background: url(<%#= asset_path "layout.png" %>)center center / contain no-repeat fixed;">-->
-
   <div class="row align-items-center justify-content-center">
     <div class="col-auto mx-auto">
-
       <br>
       <br>
         <h3>New Item</h3>
@@ -19,14 +17,11 @@
               <%= f.label :category %><br />
               <div class='form-group'>
                  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-
-                  <%= tag.label class: 'form-check-label' do %>
-                  <%= tag.check_box class: 'form-check-input' %>
-                  <%= tag.text %>
-                  <% end %>
-
-                <% end %>
-
+                  　<%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %>
+                    <%= tag.text %>
+                    <% end %>
+                 <% end %>
               </div>
             </div>
             <div class="field">
@@ -57,8 +52,11 @@
 
             <%= f.submit "Create", class: 'fas_button_round' %>
         <% end %>
-        </div>
-        <!--</div>-->
-
+    </div>
   </div>
 </div>
+
+
+
+
+
