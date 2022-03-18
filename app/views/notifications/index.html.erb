@@ -1,6 +1,15 @@
 <% notifications = @notifications.where.not(visitor_id: current_end_user.id) %>
     <br>
+   
     <div class="container">
+    <div class ="col-md-12">
+      <div class="col-md-7">
+    <%= link_to destroy_all_notifications_path, method: :delete do %>
+        <i class="fas fa-trash-alt" style="color: #fff"></i>
+        <h7 style="color: #fff;">全削除</h7>
+    <% end %>
+     </div>
+    <hr>
       <div class="row align-items-center">
         <div class="col-auto mx-auto">
             <% if notifications.exists? %>
@@ -11,4 +20,5 @@
         </div>
       </div>
     </div>
+</div>
 

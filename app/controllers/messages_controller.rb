@@ -21,7 +21,6 @@ class MessagesController < ApplicationController
             notification.save if notification.valid?
               redirect_to(room_path(@message.room_id))
         else
-          flash[:alert] = "メッセージ送信に失敗しました。"
           redirect_to(room_path(@message.room_id))
         end
     end

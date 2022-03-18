@@ -31,7 +31,7 @@
           <div class="chat-box">
             <div class="chat-face">
               <%= image_tag m.end_user.get_profile_image(30,30), class:"mt-3 rounded-circle" %>
-              <%= m.end_user.name %>: <p class="word" style="width: 350px;"><%=safe_join(m.message.split("\n"),tag(:br))%></p>
+              <%= m.end_user.name %>: <p class="word" style="width: 400px;"><%=safe_join(m.message.split("\n"),tag(:br))%></p>
             </div>
             <div class="chat-room">
               <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
