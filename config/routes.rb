@@ -20,5 +20,9 @@ Rails.application.routes.draw do
   end
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create, :show]
-  resources :notifications, only: [:index, :destroy]
+  resources :notifications, only: [:index, :destroy] do
+    collection do
+    delete 'destroy_all'
+    end
+  end
 end

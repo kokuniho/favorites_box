@@ -1,18 +1,28 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-
+<% item = notification.item %>
 
 <div>
- <%= link_to end_user_path(visitor) do %>
-     <%= visitor.name %>さんが
- <% end %>
  <% if notification.action=='dm' %>
-    あなたにChatを送りました！
+   <%= link_to end_user_path(visitor) do %>
+     <%= visitor.name %>
+   <% end %>
+    さんがあなたにChatを送りました！
+    <span><%= time_ago_in_words(notification.created_at).upcase %>
+          <%= link_to notification_path(notification.id), method: :delete do %>
+           <i class="fas fa-trash-alt" style="color: #fff"></i><% end %>
+    </span>
+ <% else %>
+   <%= notification_form(notification) %>
+   <span><%= time_ago_in_words(notification.created_at).upcase %>
+         <%= link_to notification_path(notification.id), method: :delete do %>
+          <i class="fas fa-trash-alt" style="color: #fff"></i><% end %>
+   </span>
+         <% if !@comment.nil? %>
+          <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
+         <% end %>
  <% end %>
- <%= time_ago_in_words(notification.created_at).upcase %>
+</div>
+<br>
 
-  <%= link_to notification_path(notification.id), method: :delete, class: "fas_button_border" do %>
-   <i class="fas fa-trash-alt"></i>
-  <% end %>
- </div>
- <br>
+

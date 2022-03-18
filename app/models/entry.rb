@@ -1,4 +1,4 @@
 class Entry < ApplicationRecord
-  belongs_to :room
-  belongs_to :end_user
+  belongs_to :room, optional: true
+  belongs_to :end_user, optional: true
 end
