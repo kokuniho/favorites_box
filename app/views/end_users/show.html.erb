@@ -6,94 +6,51 @@
     </div>
   </div>
 </div>
- <div class="container">
-   <div class="row">
-     <div class="col-lg-2 col-md-auto text-center text-md-left">
-
-       <h3>Profile</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-md-auto text-center text-md-left">
+      <h3>Profile</h3>
        <br>
        <div class="row justify-content-center">
-        <div class="pl">
-          <%= image_tag @end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-2 bg-body rounded-circle" %>
-          <h5 style="color:#e6c5cf">Name</h5><p><%= @end_user.name %></p>
-          <% if @end_user.introduction.nil? %>
-            <h5 style="color:#e6c5cf">Introduction</h5><p><% @end_user.introduction %></p>
-          <% else %>
-            <h5 style="color:#e6c5cf">Introduction</h5><p class="word" style="width: 140px;"><%=safe_join(@end_user.introduction.split("\n"),tag(:br))%></p>
-           <!--#紹介文が「空」じゃない時は正常に反映-->
-          <% end %>
-
-
-          <p><% if !(@end_user.name == "guestuser") %>
-               <%= link_to edit_end_user_path(@end_user) do %>
-               <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
+          <div class="pl">
+            <%= image_tag @end_user.get_profile_image(100,100) ,class: "shadow p-3 mb-2 bg-body rounded-circle" %>
+            <h5 style="color:#e6c5cf">Name</h5><p><%= @end_user.name %></p>
+            <% if @end_user.introduction.nil? %>
+              <h5 style="color:#e6c5cf">Introduction</h5><p><% @end_user.introduction %></p>
+            <% else %>
+              <h5 style="color:#e6c5cf">Introduction</h5><p class="word" style="width: 140px;"><%=safe_join(@end_user.introduction.split("\n"),tag(:br))%></p>
+             <!--# 紹介文が「空」じゃない時は正常に反映-->
+            <% end %>
+            <p><% if !(@end_user.name == "guestuser") %>
+                 <%= link_to edit_end_user_path(@end_user) do %>
+                 <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
+                 <% end %>
                <% end %>
-             <% end %></p>
-          <p style="color:#e6c5cf">
-            follows<%= link_to end_user_followings_path(@end_user.id) do %>
-              <%= @end_user.followings.count %>
-            <% end %> </p>
-          <p style="color:#e6c5cf">followers<%= link_to end_user_followers_path(@end_user.id) do %>
-              <%= @end_user.followers.count %>
-            <% end %></p>
+            </p>
+            <p style="color:#e6c5cf">
+              follows<%= link_to end_user_followings_path(@end_user.id) do %>
+                <%= @end_user.followings.count %>
+              <% end %> </p>
+            <p style="color:#e6c5cf">followers<%= link_to end_user_followers_path(@end_user.id) do %>
+                <%= @end_user.followers.count %>
+              <% end %></p>
 
-          <p><% unless current_end_user == @end_user %>
-              <% if current_end_user.following?(@end_user) %>
-               <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
-              <% else %>
-               <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
-              <% end %>
-             <% end %>
-          </p>
-          <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
-          <p><% if @end_user == current_end_user %>
-             <%#= link_to '通知を見る', notifications_index_path, class: "fas_button2" %>
-             <%= render 'notifications/sign' %>
-             <% end %>
-          </p>
-        </div>
-     </div>
-     </div>
-
-
-     <div class="col-lg-10 col-md-auto text-center" >
-       <h3>Items</h3>
-          <%= render 'items/tagshow' %>
-          <%= render 'end_users/sort', {end_user: @end_user, tag_id: @tag_id} %>
-      <% @items.each do |item| %>
-        <div class="d-inline-flex p-2 bd-highlight">
-          <div class="p-2 flex-fill bd-highlight" >
-            <div class="inline-block ">
-              <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
-              <% end %>
-              <div class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %>
-              </div>
-              <!--<p class="favorite_buttons_<%#= item.id %>"><%#= render 'favorites/favorite', item: item %></p>-->
-              <p><% item.tags.each do |tag| %>
-                  <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
-                  <% end %></p>
-              <h5>品名</h5>
-              <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
-    
-              <h5>おすすめPoint</h5>
-              <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
-             </div>
-           </div>
-        </div>
-      <% end %>
-         <div class="row justify-content-center">
-          <%= paginate @items %>
-         </div>
-         <p class="row justify-content-end"><%= link_to new_item_path do %>
-          <button class="fas_button_round">New Item</button>
-          <% end %></p>
-         <br>
-      </div>
-   </div>
- </div>
-
-
-
-
-
+            <p><% unless current_end_user == @end_user %>
+                <% if current_end_user.following?(@end_user) %>
+                 <%= link_to "フォローを外す", end_user_relationships_path(@end_user.id), method: :delete, class: "fas_button2" %>
+                <% else %>
+                 <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "fas_button2" %>
+                <% end %>
+               <% end %>
+            </p>
+            <p><%= render 'end_users/entry', end_user: @end_user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %></p>
+            <p><% if @end_user == current_end_user %>
+               <%= render 'notifications/sign' %>
+               <% end %>
+            </p>
+          </div>
+       </div>
+    </div>
+    <%= render 'end_users/box', end_user: @end_user, tag_id: @tag_id, items: @items %>
+  </div>
+</div>

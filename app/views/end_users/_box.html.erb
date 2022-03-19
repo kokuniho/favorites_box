@@ -1,0 +1,34 @@
+<div class="col-lg-10 col-md-auto text-center" >
+   <h3>Items</h3>
+      <%= render 'items/tagshow' %>
+      <%= render 'end_users/sort', {end_user: end_user, tag_id: tag_id} %>
+    <% items.each do |item| %>
+      <div class="d-inline-flex p-2 bd-highlight">
+        <div class="p-2 flex-fill bd-highlight" >
+          <div class="inline-block ">
+            <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
+            <% end %>
+            <div class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %>
+            </div>
+            <p><% item.tags.each do |tag| %>
+                <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
+                <% end %></p>
+            <h5>品名</h5>
+            <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
+            <h5>おすすめPoint</h5>
+            <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+     <div class="row justify-content-center">
+      <%= paginate items %>
+     </div>
+     <p class="row justify-content-end"><%= link_to new_item_path do %>
+      <button class="fas_button_round">New Item</button>
+      <% end %>
+     </p>
+     <br>
+</div>
+

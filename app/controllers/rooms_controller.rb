@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
     @entry1 = Entry.create(room_id: @room.id, end_user_id: current_end_user.id)
     # フォローされている側の情報をEntriesテーブルに保存
     @entry2 = Entry.create(params.require(:entry).permit(:end_user_id, :room_id).merge(room_id: @room.id))
-  redirect_to "/rooms/#{@room.id}"
+      redirect_to "/rooms/#{@room.id}"
   end
 
   def show
@@ -19,14 +19,11 @@ class RoomsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
-
   end
-  
+
   private
 
   def room_params
       params.require(:room).permit(:end_user_id)
   end
-
-
 end

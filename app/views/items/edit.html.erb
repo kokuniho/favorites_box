@@ -17,7 +17,8 @@
                     <%= tag.text %>
                     <% end %>
                   <% end %>
-              </div>
+                </div>
+            </div>
             <div class="field">
               <%= f.label :品名 %><br />
               <%= f.text_field :name %>
@@ -33,27 +34,23 @@
               </div>
             </div>
             <%= f.submit "Update", class: 'fas_button_round' %>
-            
-          <!-- 評価javascript -->
+            <!-- 評価javascript -->
             <script>
-            $('.star-rate<%= @item.id %>').raty({
-              size      : 36,
-              starOff   : '<%= asset_path('star-off.png') %>',
-              starOn    : '<%= asset_path('star-on.png') %>',
-              half      : false,
-              readOnly: true,
-              score: '<%= @item.star %>',
-            });
-          </script>
-      <% end %>
+              $('.star-rate<%= @item.id %>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: '<%= @item.star %>',
+              });
+            </script>
+          <% end %>
            <br>
-         <div class="text-center">
-           <%= link_to 'Back', @item, class: "item_#{@item.id}" %> |
-  		     <%= link_to 'Box Items', items_path, class: "back" %> 
-         </div>
+           <div class="text-center">
+             <%= link_to 'Back', @item, class: "item_#{@item.id}" %> |
+    		     <%= link_to 'Box Items', items_path, class: "back" %>
+           </div>
     </div>
   </div>
 </div>
-                  
-            　   
-                 

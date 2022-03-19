@@ -7,8 +7,8 @@ class ItemCommentsController < ApplicationController
     @comment.item_id = @item.id
     @comment_item = @comment.item
     if @comment.save
-     #通知の作成
-    @comment_item.create_notification_comment!(current_end_user, @comment.id)
+    # 通知の作成
+       @comment_item.create_notification_comment!(current_end_user, @comment.id)
     end
   end
 
@@ -24,6 +24,3 @@ class ItemCommentsController < ApplicationController
     params.require(:item_comment).permit(:comment)
   end
 end
-
-
-

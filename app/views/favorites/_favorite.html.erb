@@ -5,7 +5,6 @@
    <% end %>
 <% else %>
    <%= link_to item_favorites_path(item), method: :post, remote: true do %>
-
     <p style="color:#bdd8dd"><i class="fas fa-heart" aria-hidden="true" style="color: #fff;" ></i>
     <%= item.favorites.count %></p>
    <% end %>
