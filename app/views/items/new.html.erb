@@ -1,7 +1,4 @@
-
-
 <div class="container">
-
 <!--<div class='backimage' style="background: url(<%#= asset_path "layout.png" %>)center center / contain no-repeat fixed;">-->
   <div class="row align-items-center justify-content-center">
     <div class="col-auto mx-auto">
@@ -10,8 +7,8 @@
         <h3>New Item</h3>
           <%= form_with model: @item, url: items_path, method: :post do |f| %>
             <div class="field">
-            <%= f.label :画像 %><br />
-            <%= f.file_field :image, accept: "image/*" %>
+              <%= f.label :画像 %><br />
+              <%= f.file_field :image, accept: "image/*" %>
             </div>
             <div class="field">
               <%= f.label :category %><br />
@@ -33,30 +30,24 @@
               <%= f.text_area :body, rows: "5"%>
             </div>
             <div class="field">
-               <div class="form-group row" id="star">
+              <div class="form-group row" id="star">
                 <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %><br />
                 <%= f.hidden_field :star, id: :review_star %>
               </div>
             </div>
-          <!-- 評価javascript -->
+            <!-- 評価javascript -->
             <script>
-            $('#star').raty({
-              size     : 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
+              $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
 
-              scoreName: 'item[star]',
-              half: false,
-            });
+                scoreName: 'item[star]',
+                half: false,
+              });
             </script>
-
             <%= f.submit "Create", class: 'fas_button_round' %>
-        <% end %>
+          <% end %>
     </div>
   </div>
 </div>
-
-
-
-
-

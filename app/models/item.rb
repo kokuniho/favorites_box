@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
-   has_one_attached :image
-   belongs_to :end_user
-   has_many :item_tags, dependent: :destroy
-   has_many :tags, through: :item_tags
-   has_many :favorites, dependent: :destroy
-   has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
-   has_many :item_comments, dependent: :destroy
-   has_many :notifications, dependent: :destroy
+  has_one_attached :image
+  belongs_to :end_user
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
+  has_many :favorites, dependent: :destroy
+  has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
+  has_many :item_comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def get_image
     unless image.attached?
@@ -25,7 +25,7 @@ class Item < ApplicationRecord
       item_id: id,
       visited_id: end_user_id,
       action: "favorite"
-      )
+    )
     notification.save if notification.valid?
   end
 
@@ -51,6 +51,6 @@ class Item < ApplicationRecord
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
-    notification.save if notification.valid?
+      notification.save if notification.valid?
   end
 end

@@ -30,7 +30,7 @@ class EndUsersController < ApplicationController
         @entry = Entry.new
       end
     end
-    #タグ検索　タグがあれば、end_userのitemタグからitemを絞り込み
+    #タグ検索 タグがあれば、end_userのitemタグからitemを絞り込み
     items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : @end_user.items.all
     @tag_id = params[:tag_id].present? ? params[:tag_id] : nil
     # #ユーザーに紐づいたitem全てのページネーション。
@@ -65,7 +65,7 @@ class EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
       redirect_to end_user_path(@end_user.id)
-      flash[:notice] ="You have updated book successfully."
+      # flash[:notice] ="You have updated book successfully."
     else
       render :edit
     end
@@ -85,8 +85,6 @@ class EndUsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
-
 
   private
 
@@ -106,13 +104,7 @@ class EndUsersController < ApplicationController
   def ensure_guest_end_user
     @end_user = EndUser.find(params[:id])
     if @end_user.name == "guestuser"
-      redirect_to end_user_path(current_end_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to end_user_path(current_end_user)
     end
   end
-
 end
-
-
-
-
-

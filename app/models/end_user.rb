@@ -42,11 +42,11 @@ class EndUser < ApplicationRecord
   def following?(end_user)
     followings.include?(end_user)
   end
-  
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   def create_notification_follow!(current_end_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_end_user.id, id, 'follow' ])
     if temp.blank?

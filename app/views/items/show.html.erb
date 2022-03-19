@@ -19,55 +19,34 @@
           <div><%= link_to items_path do %>
             <%= image_tag @item.get_image, size: "300x300", class:"shadow p-3 mb-2 bg-body round"; %>
             <% end %></div>
-            
           <span><%= link_to end_user_path(@end_user.id) do %>
                   <%= image_tag @item.end_user.get_profile_image(30,30), class:"mt-3 rounded-circle"; %>By
                 <%= @item.end_user.name %><% end %> |</span>
-            
           <span class="item-comments-counter"><%= render 'item_comments/counter', item: @item %></span>
-          <br>
-          <br>
       </div>
-      <span class="favorite_buttons_<%= @item.id %>"><%= render 'favorites/favorite', item: @item %></span>
-      <p><% @item.tags.each do |tag| %>
-      <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
-      <% end %></p>
-      <p><strong><i class="fas fa-gift"></i>: <span><%= @item.name %></span></strong></p>
-      <p class="word" style="width: 310px;"><strong><i class="fas fa-comment-dots"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
-      <br />
-      <div class ="text-center">
-        <% if @item.end_user == current_end_user %>
-          <p><%= link_to edit_item_path(@item), class: "fas_button_border" do %>
-               <i class="fas fa-cog"></i> Edit
-             <% end %>
-             <%= link_to item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "fas_button_border" do %>
-               <i class="fas fa-trash-alt"></i> Delete
+          <span class="favorite_buttons_<%= @item.id %>"><%= render 'favorites/favorite', item: @item %></span>
+          <p><% @item.tags.each do |tag| %>
+              <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
              <% end %>
           </p>
-        <% end %>
-      </div>
-      <div><%= render "item_comments/form", item: @item, item_comment: @item_comment %></div>
-      <br>
-      <div class="item-comments-comment"><%= render 'item_comments/comment', item: @item %></div>
-      <br>
-      </div>
+          <p><strong><i class="fas fa-gift"></i>: <span><%= @item.name %></span></strong></p>
+          <p class="word" style="width: 310px;"><strong><i class="fas fa-comment-dots"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
+          <div class ="text-center">
+            <% if @item.end_user == current_end_user %>
+              <p><%= link_to edit_item_path(@item), class: "fas_button_border" do %>
+                  <i class="fas fa-cog"></i> Edit
+                 <% end %>
+                 <%= link_to item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "fas_button_border" do %>
+                  <i class="fas fa-trash-alt"></i> Delete
+                 <% end %>
+              </p>
+            <% end %>
+          </div>
+        <div><%= render "item_comments/form", item: @item, item_comment: @item_comment %></div>
+        <br>
+        <div class="item-comments-comment"><%= render 'item_comments/comment', item: @item %></div>
+        <br>
+     </div>
     </div>
   </div>
 </div>
-           
-       
-        
-      
-
-
-
-
-
-
-
-
-
-
-
-
-

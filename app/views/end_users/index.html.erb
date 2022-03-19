@@ -24,18 +24,13 @@
                  <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "fas_button2" %>
                 <% end %>
               <% end %>
-            </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-    <br>
-    <div class="row justify-content-center">
-      <%= paginate @end_users %>
-    </div>
-
-
-
-
-
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <%= paginate @end_users %>
+  </div>
 
