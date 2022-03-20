@@ -26,6 +26,9 @@ class Item < ApplicationRecord
       visited_id: end_user_id,
       action: "favorite"
     )
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save if notification.valid?
   end
 
