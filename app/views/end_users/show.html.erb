@@ -21,7 +21,7 @@
               <h5 style="color:#e6c5cf">Introduction</h5><p class="word" style="width: 140px;"><%=safe_join(@end_user.introduction.split("\n"),tag(:br))%></p>
              <!--# 紹介文が「空」じゃない時は正常に反映-->
             <% end %>
-            <p><% if !(@end_user.name == "guestuser") %>
+            <p><% if current_end_user == @end_user %>
                  <%= link_to edit_end_user_path(@end_user) do %>
                  <button class="fas_button_borderradius"><i class="far fa-edit"></i> Edit</button>
                  <% end %>

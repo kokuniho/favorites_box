@@ -10,13 +10,13 @@
     さんがあなたにChatを送りました！
     <span><%= time_ago_in_words(notification.created_at).upcase %>
           <%= link_to notification_path(notification.id), method: :delete do %>
-           <i class="fas fa-trash-alt" style="color: #fff"></i><% end %>
+           <i class="fas fa-trash-alt" style="color: #e6c5cf"></i><% end %>
     </span>
  <% else %>
    <%= notification_form(notification) %>
    <span><%= time_ago_in_words(notification.created_at).upcase %>
          <%= link_to notification_path(notification.id), method: :delete do %>
-          <i class="fas fa-trash-alt" style="color: #fff"></i><% end %>
+          <i class="fas fa-trash-alt" style="color: #e6c5cf"></i><% end %>
    </span>
          <% if !@comment.nil? %>
           <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>

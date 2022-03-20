@@ -1,4 +1,4 @@
 <%= form_with(model:[item, item_comment], url: item_item_comments_path(item), local: false) do |f| %>
-  <%= f.text_area :comment, rows:'2', placeholder: "コメントはここへ", class: "w-30 comment-textarea" %>
+  <%= f.text_area :comment, rows:'1', placeholder: "コメントはここへ", class: "w-30 comment-textarea" %>
   <%= f.submit "Send", class: 'fas_button_round' %>
 <% end %>

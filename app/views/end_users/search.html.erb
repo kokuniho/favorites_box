@@ -3,6 +3,7 @@
   <br>
     <div class="col-md-12">
       <div class="row justify-content-center">
+      <% if @results.exists? %>
         <% @results.each do |end_user| %>
           <div class="pl-4">
             <%= link_to end_user_path(end_user) do %>
@@ -28,10 +29,14 @@
             </div>
           </div>
         <% end %>
+      <% else %>
+        <p>Memberはいません</p>
+      <% end %>
       </div>
     </div>
 <br>
 <div class="row justify-content-center">
-  <%= link_to "Back", end_users_path, class: 'fas_button_round' %>
+  <%= link_to end_users_path, class: 'fas_button_round' do %>
+  Back<% end %>
 </div>
 <br>

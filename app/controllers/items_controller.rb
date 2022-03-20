@@ -21,20 +21,22 @@ class ItemsController < ApplicationController
   def index
     # 過去一週間分のいいね数多い順に並べ替え
     @end_user = current_end_user
-    @items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : Item.all
-    to = Time.current.at_end_of_day
+    items = params[:tag_id].present? ? Tag.find(params[:tag_id]).items : Item.all
+    @tag_id = params[:tag_id].present? ? params[:tag_id] : nil
+    if params[:sort] == "star"
+       items = items.all.order("star DESC")
+    elsif params[:sort] == "create"
+          items = items.all.order(created_at: :desc)
+    else
+     items = items.all.order(created_at: :desc)
+      to = Time.current.at_end_of_day
       from = (to - 6.day).at_beginning_of_day
-        items = @items.all.sort { |a, b|
+        items = items.all.sort {|a,b|
         b.favorites.where(created_at: from...to).size <=>
         a.favorites.where(created_at: from...to).size
-    }
-    @items = Kaminari.paginate_array(items).page(params[:page])
-    if params[:sort] == "star"
-       @items = Item.all.order("star DESC").page(params[:page])
-    elsif params[:sort] == "create"
-          @items = Item.all.order(created_at: :desc).page(params[:page])
+        }
     end
-
+    @items = Kaminari.paginate_array(items).page(params[:page])
   end
 
   def show
@@ -73,6 +75,4 @@ class ItemsController < ApplicationController
   def redirect_root
       redirect_to root_path unless end_user_signed_in?
   end
-
-
 end

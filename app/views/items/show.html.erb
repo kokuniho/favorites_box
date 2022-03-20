@@ -6,6 +6,7 @@
        <div class ="text-center">
           <div id="star-rate<%= @item.id %>"></div>
            <script>
+          $('#star-rate<%= @item.id %>').empty();
             $('#star-rate<%= @item.id%>').raty({
               size      : 36,
               starOff   : '<%= asset_path('star-off.png') %>',
@@ -25,10 +26,10 @@
           <span class="item-comments-counter"><%= render 'item_comments/counter', item: @item %></span>
       </div>
           <span class="favorite_buttons_<%= @item.id %>"><%= render 'favorites/favorite', item: @item %></span>
-          <p><% @item.tags.each do |tag| %>
+          <h5><% @item.tags.each do |tag| %>
               <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
              <% end %>
-          </p>
+          </h5>
           <p><strong><i class="fas fa-gift"></i>: <span><%= @item.name %></span></strong></p>
           <p class="word" style="width: 310px;"><strong><i class="fas fa-comment-dots"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
           <div class ="text-center">
