@@ -14,7 +14,7 @@ body {
   flex-flow: column;
   min-height: 100vh;
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  color: #bdd8dd;
+  color: #af9dc0;
  }
 
  main {
@@ -45,11 +45,24 @@ body {
 	cursor: pointer;
 }
 
+.fas_button1{
+	border: none;
+	padding: 5px 10px;
+	height: 40px;
+	line-height: 1;
+	background: #e6c5cf;
+	color: #af9dc0;
+	border-radius: 20px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+
 .fas_button_borderradius{
 	padding: 0 20px;
 	height: 40px;
 	line-height: 1;
-	background: #af9dc0;
+	background: #ffffff;
 	border: 2px solid #e6c5cf;
 	color: #e6c5cf;
 	font-size: 1em;
@@ -107,7 +120,7 @@ body {
   padding-top: 0rem;
   margin-left: 2rem;
   margin-top: 1rem;
-  color: #efa04c;
+  color: #e33059;
 }
 
 .word{
@@ -119,8 +132,8 @@ body {
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   //border: none;     /*枠線をなくす*/
-  color: #bdd8dd;/*文字の色を変える*/
-  background-color: #af9dc0;
+  color: #af9dc0;/*文字の色を変える*/
+  background-color: #ffffff;
   border-radius: 15px;
 }
 

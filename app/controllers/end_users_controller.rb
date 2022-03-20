@@ -40,13 +40,12 @@ class EndUsersController < ApplicationController
       items = items.where(end_user_id: params[:id]).order(created_at: :desc)
     else
       items = items.where(end_user_id: params[:id])#.page(params[:page])
-      to = Time.current.at_end_of_day
-      from = (to - 6.day).at_beginning_of_day
-      items = items.all.sort {|a,b|
-          pp a, b
-          b.favorites.where(created_at: from...to).size <=>
-          a.favorites.where(created_at: from...to).size
-      }
+        to = Time.current.at_end_of_day
+        from = (to - 6.day).at_beginning_of_day
+        items = items.all.sort {|a,b|
+        b.favorites.where(created_at: from...to).size <=>
+        a.favorites.where(created_at: from...to).size
+        }
     end
     @items = Kaminari.paginate_array(items).page(params[:page])
     @notifications = current_end_user.passive_notifications
