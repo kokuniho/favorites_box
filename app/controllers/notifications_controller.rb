@@ -1,11 +1,10 @@
 class NotificationsController < ApplicationController
 
-
   def index
     @notifications = current_end_user.passive_notifications
-      @notifications.where(checked: false).each do |notification|
+    @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
-      end
+    end
   end
 
   def destroy
@@ -16,7 +15,7 @@ class NotificationsController < ApplicationController
 
   def destroy_all
       # 通知を全削除
-      @notifications = current_end_user.passive_notifications.destroy_all
-        redirect_to request.referer
+    @notifications = current_end_user.passive_notifications.destroy_all
+    redirect_to request.referer
   end
 end

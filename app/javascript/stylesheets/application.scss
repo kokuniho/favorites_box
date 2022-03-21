@@ -2,12 +2,6 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
 
-// * {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-//   }
-
 body {
   width: 100%;
   display: flex;
@@ -15,10 +9,6 @@ body {
   min-height: 100vh;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #af9dc0;
- }
-
- main {
-  flex: 1;
  }
 
  .fas_button_round{
@@ -127,7 +117,9 @@ body {
 	word-wrap: break-word;
 }
 
-
+.badge1{
+	background: #e1eded;
+}
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
@@ -176,11 +168,5 @@ body {
  footer{
   min-width: 420px;
  }
- //footer{
- //	display: flex;
- //	flex-flow: column;
- //}
-
-
 }
 

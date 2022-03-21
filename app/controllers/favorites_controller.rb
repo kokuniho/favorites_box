@@ -6,9 +6,9 @@ class FavoritesController < ApplicationController
     #通知の作成
     @item.create_notification_by(current_end_user)
         respond_to do |format|
-        format.html {redirect_to request.referrer}
+        format.html { redirect_to request.referrer }
         format.js
-      end
+        end
   end
 
   def destroy

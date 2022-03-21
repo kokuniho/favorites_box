@@ -1,15 +1,13 @@
-  <br>
-  <div class= "container">
-    <div class="row justify-content-center">
-    <% if tag_id.nil? %>
-      <%= link_to items_path({sort: "create"}) do %>新着順<% end %>
-      |
-      <%= link_to items_path({sort: "star"}) do %>星評価順<% end %>
-    <% else %>
-      <%= link_to items_path({sort: "create", tag_id: tag_id}) do %>新着順<% end %>
-      |
-      <%= link_to items_path({sort: "star", tag_id: tag_id}) do %>星評価順<% end %>
-    <% end %>
+<div class= "container">
+  <div class="row justify-content-center">
+  <% if tag_id.nil? %>
+    <%= link_to items_path({sort: "create"}) do %>新着順<% end %>
+    |
+    <%= link_to items_path({sort: "star"}) do %>星評価順<% end %>
+  <% else %>
+    <%= link_to items_path({sort: "create", tag_id: tag_id}) do %>新着順<% end %>
+    |
+    <%= link_to items_path({sort: "star", tag_id: tag_id}) do %>星評価順<% end %>
+  <% end %>
   </div>
-    
-  </div>
+</div>

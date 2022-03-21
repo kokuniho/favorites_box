@@ -8,6 +8,6 @@
 Tag.create([
     { name: '美容系' },
     { name: '健康系' },
-    { name: '生活雑貨'},
-    { name: 'その他'}
+    { name: '生活雑貨' },
+    { name: 'その他' }
     ])

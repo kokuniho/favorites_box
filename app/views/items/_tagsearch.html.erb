@@ -1,4 +1,4 @@
-<div class= "text-center text-secondary">
+<div class= "text-center">
     <%= form_tag items_path, method: :get, class: 'boards__searchForm' do %>
       <%= select_tag :tag_id,
                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),

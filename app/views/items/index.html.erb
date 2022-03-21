@@ -1,5 +1,5 @@
 <br>
-  <h2 class= "text-center">Box Items</h2>
+  <h2 class= "text-center"><i class="far fa-gem"></i> Items Box</h2>
      <div class="col-md-10">
      <p class="row justify-content-end">
      <%= link_to new_item_path do %>
@@ -8,20 +8,20 @@
   <%= render 'items/tagsearch' %>
   <%= render 'items/sort', tag_id: @tag_id %>
  <br>
-   <div class="col-md-12 text-center">
+   <div class="col-md-12">
     <div class="row justify-content-center">
     <% @items.each do |item| %>
         <div class="pl-5">
           <%= link_to item_path(item.id) do %>
           <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
           <% end %>
-          <p style="color:#af9dc0"><i class="fas fa-heart" aria-hidden="true" style="color: #e6c5cf;"></i>
+          <p style="color:#af9dc0"><i class="fas fa-heart" aria-hidden="true" style="color: #af9dc0;"></i>
            <%= item.favorites.count %> 個</p>
           <!--<p class="favorite_buttons_<%#= item.id %>"><%#= render 'favorites/favorite', item: item %></p>-->
           <h5><% item.tags.each do |tag| %>
-              <span class= 'badge badge-light'><a style="color:#e6c5cf"><%= tag.name %></a></span>
+              <span class= 'badge badge1'><a style="color:#af9dc0"><%= tag.name %></a></span>
               <% end %></h5>
-          <h5><i class="fas fa-gift"></i> 品名</h5>
+          <h5><i class="far fa-gem"></i> Item</h5>
           <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
           <h5><i class="fas fa-comment-dots"></i> Point</h5>
           <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>

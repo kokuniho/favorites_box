@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  default_scope->{ order(created_at: :desc) }
+  default_scope -> { order(created_at: :desc) }
 
   # 新着順
   belongs_to :item, optional: true
