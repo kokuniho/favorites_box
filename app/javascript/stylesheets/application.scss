@@ -140,14 +140,20 @@ body {
   border-radius: 15px;    /*角を丸くする*/
 }
 
-@media screen and (max-width:765px) {
+@media screen and (max-width:991px) {
+	.fas_button_round{
+  	margin-bottom: 10px;
+  }
+}
+@media screen and (max-width:768px) {
 
  @include media-breakpoint-up(md) {
     @include row-cols(1);
   }
   .fas_button_borderbackround{
  	margin-bottom: 10px;
- }
+ 	}
+
 }
 
 // @media screen and (max-width:860px){

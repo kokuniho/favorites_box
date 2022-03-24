@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :redirect_root, except: :index
+  # impressionist :actions=> [:show]
+  
   # before_action :show_redirect
 
   def new
@@ -41,6 +43,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    unless ViewCount.find_by(end_user_id: current_end_user.id, item_id: @item.id)
+      current_end_user.view_counts.create(item_id: @item.id)
+    end
     @end_user = EndUser.find_by(id: @item.end_user_id)
     @item_comment = ItemComment.new
   end

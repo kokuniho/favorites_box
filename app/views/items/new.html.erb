@@ -1,4 +1,5 @@
 <div class="container">
+ <%= render 'items/error', item: @item %>
 <!--<div class='backimage' style="background: url(<%#= asset_path "layout.png" %>)center center / contain no-repeat fixed;">-->
   <div class="row align-items-center justify-content-center">
     <div class="col-auto mx-auto">
@@ -13,7 +14,7 @@
             <br>
             <div class="field">
               <%= f.label :Tag %><br />
-              <div class='form-group'>
+              <div class='radio_button'>
                  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                   　<%= tag.label class: 'form-check-label' do %>
                     <%= tag.check_box class: 'form-check-input' %>

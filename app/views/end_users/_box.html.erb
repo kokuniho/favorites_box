@@ -1,6 +1,6 @@
 <div class="col-lg-10 col-md-auto text-center text-md-left" >
    <h4><i class="far fa-gem"></i> <%= @end_user.name %> 's Items</h4>
-    <div class="row justify-content-end">
+    <div class="row justify-content-end text-md-center">
       <%= link_to new_item_path do %>
       <button class="fas_button_round"><i class="fas fa-plus-circle" style="color: #af9dc0;"></i> Post</button>
       <% end %>
@@ -23,7 +23,7 @@
                 <% end %></h5>
             <h5><i class="far fa-gem"></i> Item</h5>
             <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
-            <h5><i class="fas fa-comment-dots"></i> Point</h5>
+            <h5><i class="fas fa-pen"></i> Point</h5>
             <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
           </div>
         </div>

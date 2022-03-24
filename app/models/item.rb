@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   has_one_attached :image
   belongs_to :end_user
   has_many :item_tags, dependent: :destroy
@@ -7,6 +8,9 @@ class Item < ApplicationRecord
   has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
   has_many :item_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
+  validates :name, presence: true, length: { in: 1..20 }
+  validates :body, presence: true, length: { maximum: 100 }
 
   def get_image
     unless image.attached?

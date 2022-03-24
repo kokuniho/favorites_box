@@ -23,7 +23,7 @@
               <% end %></h5>
           <h5><i class="far fa-gem"></i> Item</h5>
           <p><%= link_to item.name,item, class: "item_#{item.id}" %></p>
-          <h5><i class="fas fa-comment-dots"></i> Point</h5>
+          <h5><i class="fas fa-pen"></i> Point</h5>
           <p class="word" style="width: 140px;"><%=safe_join(item.body.split("\n"),tag(:br))%></p>
           <!--<td id="favorite_buttons_<%#= book.id %>"><%#= render "favorites/favorite-btn", book: book %></td>-->
                 <!--<td><%#= render "book_comments/counter", book: book %></td>-->
