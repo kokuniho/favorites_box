@@ -2,13 +2,16 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
 
+
 body {
   width: 100%;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 18px;
   color: #af9dc0;
+  line-height: 30px;
  }
 
  .fas_button_round{
@@ -155,24 +158,27 @@ body {
  	}
 
 }
-
-// @media screen and (max-width:860px){
-//   .backimage{
-// 	　background-attachment: fixed;
-// 	}
-// }
 @media screen and (max-width:569px) {
 	.fas_button_borderbackround{
  		padding: 0px 10px;
  }
  .fas_button_round{
  	margin-right: 10px;
+ 	line-height: 25px;
+ }
+ body{
+ 	font-size: 15px;
  }
 }
 @media screen and (max-width:428px) {
- header,
- footer{
-  min-width: 420px;
+ body{
+ 	font-size: 10px;
+ 	line-height: 20px;
  }
 }
+@media screen and (max-width:270px) {
+ body{
+ 	font-size: 8px;
 
+ }
+}
