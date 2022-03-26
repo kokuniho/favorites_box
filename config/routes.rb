@@ -25,4 +25,7 @@ Rails.application.routes.draw do
         delete 'destroy_all'
     end
   end
+  devise_scope :end_user do
+    post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
+  end
 end

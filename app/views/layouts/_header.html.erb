@@ -33,6 +33,11 @@
         </li>
         <% else %>
         <li class="nav-item">
+          <button class="fas_button_borderbackround"><%= link_to end_users_guest_sign_in_path, class: 'nav-link text-light', method: :post do %>
+          <i class="fas fa-sign-in-alt"></i> Guest
+          <% end %></button>
+        </li>
+        <li class="nav-item">
           <button class="fas_button_borderbackround"><%= link_to items_path, class: 'nav-link text-light' do %>
           <i class="far fa-gem"></i> Items Box
           <% end %></button>

@@ -4,7 +4,11 @@ class EndUsers::SessionsController < Devise::SessionsController
   # before_action :reject_inactive_end_user, only: [:create]
   before_action :end_user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
-
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to end_user_path(end_user), notice: 'guestとしてログインしました!'
+  end
   # GET /resource/sign_in
   # def new
   #   super

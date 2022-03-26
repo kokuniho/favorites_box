@@ -102,7 +102,7 @@ class EndUsersController < ApplicationController
     def ensure_guest_end_user
       @end_user = EndUser.find(params[:id])
       if @end_user.name == "guestuser"
-        redirect_to end_user_path(current_end_user)
+        redirect_to end_user_path(current_end_user), notice: 'ゲストはプロフィール編集できません。'
       end
     end
 end
