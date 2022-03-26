@@ -14,7 +14,7 @@
         <div class="p-2 flex-fill bd-highlight" >
           <div class="inline-block ">
             <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_image, size:'80x80', class: "shadow p-3 mb-4 bg-body round" %>
+            <%= image_tag item.get_image, size:'100x100', class: "shadow p-3 mb-4 bg-body round" %>
             <% end %>
             <div class="favorite_buttons_<%= item.id %>"><%= render 'favorites/favorite', item: item %>
             </div>
