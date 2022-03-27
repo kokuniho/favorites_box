@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_many :item_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :view_counts, dependent: :destroy
-  validates :name, presence: true, length: { in: 1..20 }
+  validates :name, presence: true, length: { in: 1..30 }
   validates :body, presence: true, length: { maximum: 100 }
 
   def get_image

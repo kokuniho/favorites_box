@@ -32,7 +32,7 @@
              <% end %>
           </h5>
           <p><strong><i class="far fa-gem"></i>: <span><%= @item.name %></span></strong></p>
-          <p class="word" style="width: 310px;"><strong><i class="fas fa-pen"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
+          <p class="word" style="width: 280px;"><strong><i class="fas fa-pen"></i>: <span><%=safe_join(@item.body.split("\n"),tag(:br))%></span></strong></p>
           <div class ="text-center">
             <% if @item.end_user == current_end_user %>
               <p><%= link_to edit_item_path(@item), class: "fas_button_border" do %>

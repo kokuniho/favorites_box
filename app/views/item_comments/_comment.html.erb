@@ -4,7 +4,7 @@
       <% item.item_comments.each do |item_comment| %>
         <tr>
           <td>
-           <p class="word" style="width: 140px;"><%=safe_join(item_comment.comment.split("\n"),tag(:br))%></p>
+           <p class="word" style="width: 150px;"><%=safe_join(item_comment.comment.split("\n"),tag(:br))%></p>
           </td>
           <td>
             <i class="far fa-user-circle"></i>By<%= item_comment.end_user.name %><%= item_comment.created_at.strftime('%Y/%m/%d') %>
