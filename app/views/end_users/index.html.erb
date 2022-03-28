@@ -14,7 +14,7 @@
             <%= end_user.name %><% end %>
           </p>
           <% if end_user.introduction.nil? %>
-            <p><i class="fas fa-pen-square"></i>:<% end_user.introduction %></p>
+            <p><i class="fas fa-pen-square"></i><% end_user.introduction %></p>
           <% else %>
             <p class="word" style="width: 140px;"><i class="fas fa-pen-square"></i> <%=safe_join(end_user.introduction.split("\n"),tag(:br))%></p>
            <!--#紹介文が「空」じゃない時は正常に反映する-->
