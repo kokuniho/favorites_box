@@ -37,6 +37,7 @@
             <%= f.submit "Update", class: 'fas_button_round' %>
             <!-- 評価javascript -->
             <script>
+            $('.star-rate<%= @item.id %>').empty();
               $('.star-rate<%= @item.id %>').raty({
                 size      : 36,
                 starOff   : '<%= asset_path('star-off.png') %>',

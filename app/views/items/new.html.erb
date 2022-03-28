@@ -32,13 +32,15 @@
               <%= f.text_area :body, rows: "5"%>
             </div>
             <div class="field">
+              <h5>評価</h5>
               <div class="form-group row" id="star">
-                <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %><br />
+                <%= f.label :star, class:'col-md-3 col-form-label' %><br />
                 <%= f.hidden_field :star, id: :review_star %>
               </div>
             </div>
             <!-- 評価javascript -->
             <script>
+            $('#star').empty();
               $('#star').raty({
                 size     : 36,
                 starOff:  '<%= asset_path('star-off.png') %>',
