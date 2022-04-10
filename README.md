@@ -35,6 +35,7 @@
 
 
 ## 設計書
+https://drive.google.com/file/d/1SCe7Y7zJUrKgVS2nwqVngoa5xriirK3A/view?usp=sharing
 
 
 
