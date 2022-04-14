@@ -1,16 +1,18 @@
 <% unless end_user.id == current_end_user.id %>
+  <!--相互フォロー状態の時-->
   <% if (current_end_user.following? end_user) && (end_user.following? current_end_user) %>
+  <!--すでにルームが作成している時と作成されていない時の条件分岐-->
     <% if isRoom == true %>
       <p class="end-user-show-room"><a href="/rooms/<%= roomId %>" class="fas_button2">Chat Room <i class="fas fa-comment-dots"></i></a></p>
     <% else %>
-      <!--レコードは、Roomsテーブルと、Entriesテーブル両方に保存する-->
+      <!--レコードは、親Roomテーブルと子Entriesテーブル両方に保存する-->
       <%= form_with model: room, url: rooms_path do |f| %>
        <%= fields_for entry do |e| %>
-       <!--Entriesテーブルのレコードにはend_user_idを送る必要がある-->
+       <!--Entriesテーブルのレコードにはend_user_idを送る-->
          <%= e.hidden_field :end_user_id, value: end_user.id %>
-       <% end %>
-       <%= f.submit "Start Chat", class:"fas_button2"%>
       <% end %>
+       <%= f.submit "Start Chat", class:"fas_button2"%>
+       <% end %>
     <% end %>
   <% end %>
 <% end %>

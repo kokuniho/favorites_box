@@ -7,11 +7,13 @@ class RoomsController < ApplicationController
     @entry1 = Entry.create(room_id: @room.id, end_user_id: current_end_user.id)
     # フォローされている側の情報をEntriesテーブルに保存
     @entry2 = Entry.create(params.require(:entry).permit(:end_user_id, :room_id).merge(room_id: @room.id))
+    #createと同時に、チャットルームが開くように
       redirect_to "/rooms/#{@room.id}"
   end
 
   def show
     @room = Room.find(params[:id])
+    #Entriesテーブルに、現在ログインしているユーザーのidとそれにひもづいたチャットルームのidがあるか検索
     if Entry.where(end_user_id: current_end_user.id, room_id: @room.id).present?
       @messages = @room.messages.all
       @message = Message.new

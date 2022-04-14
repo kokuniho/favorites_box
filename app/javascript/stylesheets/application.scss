@@ -115,7 +115,7 @@ body {
   margin-top: 1rem;
   color: #e33059;
 }
-
+//単語の幅が行ボックスの幅より大きい場合
 .word{
 	word-wrap: break-word;
 }
@@ -124,23 +124,22 @@ body {
 	background: #e1eded;
 }
 
-/*ページネーション自体のデザイン*/
+//ページネーション自体のデザイン
 .pagination>li>a {
-  //border: none;     /*枠線をなくす*/
-  color: #af9dc0;/*文字の色を変える*/
+  color: #af9dc0;//文字の色を変える
   background-color: #ffffff;
   border-radius: 15px;
 }
 
-/* 表示しているページ番号のデザイン */
+//表示しているページ番号のデザイン
 .pagination>.active>a {
-  background: #af9dc0;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
+  background: #af9dc0;     //背景の色を変える
+  border-radius: 15px;     //角を丸くする
 }
 
-/*ホバー時のデザイン*/
+//ホバー時のデザイン
 .pagination>li>a:hover {
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;    //角を丸くする
 }
 
 @media screen and (max-width:991px) {
