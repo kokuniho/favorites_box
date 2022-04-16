@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
-
   # 新着順
+  #optional: true =item_id にnilを許容するもの(フォロー通知が有効にするため)
   belongs_to :item, optional: true
   belongs_to :item_comment, optional: true
   belongs_to :visitor, class_name: 'EndUser', foreign_key: 'visitor_id', optional: true

@@ -17,6 +17,7 @@ class EndUser < ApplicationRecord
   has_many :item_comments, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  #自分が作った通知(active_notifications)自分宛の通知(passive_notifications)
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :view_counts, dependent: :destroy
