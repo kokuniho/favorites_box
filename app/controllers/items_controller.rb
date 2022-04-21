@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
   before_action :redirect_root, except: :index
-  # impressionist :actions=> [:show]
-  
-  # before_action :show_redirect
+  before_action :ensure_end_user, only: [:edit]
 
   def new
     @item = Item.new
@@ -79,5 +77,11 @@ class ItemsController < ApplicationController
 
   def redirect_root
     redirect_to root_path unless end_user_signed_in?
+  end
+
+  def ensure_end_user
+    @items = current_end_user.items
+    @item = @items.find_by(id: params[:id])
+    redirect_to items_path unless @item
   end
 end
