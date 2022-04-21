@@ -148,6 +148,12 @@ body {
 		object-fit: cover;
 }
 
+ .thumb-110 {
+		width: 110px;
+		height: 110px;
+		object-fit: cover;
+	}
+
 @media screen and (max-width:991px) {
 	.fas_button_round{
   	margin-bottom: 10px;
