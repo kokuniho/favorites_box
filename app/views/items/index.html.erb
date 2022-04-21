@@ -13,7 +13,7 @@
     <% @items.each do |item| %>
         <div class="pl-5">
           <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image, size:'120x120', class: "shadow p-3 mb-4 bg-body round" %>
+          <%= image_tag item.get_image, size:'120x120', class: "thumb-120 shadow p-3 mb-4 bg-body round" %>
           <% end %>
           <p style="color:#af9dc0"><i class="fas fa-heart" aria-hidden="true" style="color: #af9dc0;"></i>
            <%= item.favorites.count %> 個</p>
